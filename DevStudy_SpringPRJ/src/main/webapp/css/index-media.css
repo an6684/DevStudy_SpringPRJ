@@ -1,0 +1,154 @@
+@charset "UTF-8";
+/*
+	작성자 : munhokang
+	작성일 : 2023. 5. 11.
+	comment : 
+		- media query를 이용한 
+			header-select.jsp와 select.jsp 반응형 css file
+*/
+@media screen and (max-width: 1000px) {
+	section {
+		padding: 0;
+	}
+	.section-wrap {
+		width: 100%;
+	}
+	#dev-list h2 {
+		text-align: center;
+		font-size: 27px;
+		margin: 10px 0 50px 0;
+	}
+	#h2-span {
+		font-size: 27px;
+	}
+	.dev-list-wrap {
+		display: flex;
+		justify-content: center;
+	}
+	.thum {
+		text-align: center;
+	}
+	#dev-list .thum img {
+		width: 70px;
+		margin: 0px 20px;
+	}
+	.h2-title {
+		font-size: 20px;
+		margin: 0 0 30px 0;
+		text-align: center;
+	}
+	.h2-title-gray {
+		font-size: 23px;
+	}
+	.scroll-box {
+		padding: 5px 0;
+		width: 100%;
+	}
+	.url-card:hover {
+		transform: scale(1.1);
+	}
+	.url-title, .url-content {
+		text-align: left;
+		color: black;
+		padding: 0 20px;
+		display: block;
+	}
+	.url-title {
+		font-size: 23px;
+		height: 55px;
+	}
+	.url-content {
+		font-weight: 400;
+		font-size: 12px;
+		height: 15%;
+		margin: 10px 0;
+	}
+	.background-none {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	:-webkit-scrollbar {
+  	display: scroll;
+	}
+	section {
+		padding: 40px 0 0 0;
+	}
+	#dev-list h2 {
+		font-size: 22px;
+	}
+	#h2-span {
+		font-size: 22px;
+		width: 100%;
+	}
+	.section-wrap {
+		width: 100%;
+	}
+	.dev-list-wrap {
+		justify-content: space-around;
+		padding-bottom: 30px;
+	}
+	.dev-list-wrap .thum span {
+		font-weight: normal;
+	}
+	#dev-list .thum img {
+		width: 50px;
+		margin: 0px 0px;
+	}
+	.h2-title {
+		font-size: 18px;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+	.h2-title-gray {
+		font-size: 18px;
+	}
+	.scroll-box {
+		padding: 0;
+		width: 100%;
+	}
+	.card-wrap {
+		display: flex;
+		width: max-content;
+	}
+	.url-card {
+		width: 250px;
+		padding: 10px 0 30px 0;
+		margin-right: 30px;
+		transition: none;
+		box-shadow: none;
+	}
+	.url-card:hover {
+		transform: none;
+	}
+	.url-title, .url-content {
+		padding: 0 10px;
+	}
+	.url-title {
+		font-size: 17px;
+		height: 40px;
+	}
+	.relative {
+		position: none;
+	}
+	.background-none {
+		display: none;
+	}
+	.scroll-img {
+		display: none;
+	}
+	.left {
+		position: none;
+	}
+	.right {
+		position: none;
+	}
+	#white-bg {
+		padding: 30px 0;
+	}
+	#white-bg span { font-size: 12px; }
+}
+
+@media screen and (max-width: 500px) {
+}

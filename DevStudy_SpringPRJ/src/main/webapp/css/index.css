@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+/* 모든 scroll 영역의 scoll 숨김 */
+::-webkit-scrollbar {
+    display: none; 
+}
+
+section {
+    background: rgb(244, 244, 244, 0.5);
+    width: 100%;
+    padding: 50px 0;
+}
+section span {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.section-wrap {
+    width: 60%;
+    margin: 0 auto;
+}
+#dev-list h2 {
+    font-size: 40px;
+    margin: 10px 0 100px 0;
+}
+.dev-list-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+.thum {
+    text-align: center;
+}
+#dev-list .thum img {
+    width: 100px;
+}
+#h2-span {
+    display: inline;
+    color: rgb(77, 76, 76);
+    font-size: 35px;
+}
+#html {
+    width: 100%;
+}
+.scroll-box {
+    padding: 25px;
+    width: 100%;
+}
+.card-wrap {
+    display: flex;
+    width: 100%;
+}
+.url-card {
+    text-align: center;
+    border-radius: 7%;
+    display: inline-block;
+    width: 23.5%;
+    background-color: #fff;
+    padding: 30px 0 60px 0;
+    box-shadow: 3px 5px 10px rgba(200, 200, 200, 0.2);
+    transition: 0.5s;
+    margin: 0 20px;
+}
+.url-card:hover {
+	transform: scale(1.1);
+}
+.url-title,
+.url-content {
+    text-align: left;
+    color: black;
+    padding: 0 20px;
+    display: block;
+}
+.url-title {
+    font-size: 23px;
+    height: 55px;
+}
+.url-content {
+    font-weight: 400;
+    font-size: 12px;
+    height: 15%;
+    margin: 10px 0;
+}
+/* url */
+embed {
+    width: 90%;
+    height: 151.88px;
+    border-radius: 5px;
+}
+#white-bg {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 14px;
+    background-color: #fff;
+}
+#white-bg span { font-weight: normal; margin: 0;}
+
+/* 스크롤 맨위로 올리기 */
+#swipe-btn {
+	position: fixed;
+	bottom: 10%;
+    right: 10px;
+    width: 45px;
+	z-index: 10;
+	cursor: pointer;
+}
+h2{
+	text-align: center;
+}
+.sbj-tit{
+	color: rgb(77, 76, 76); 
+    font-size: 27px;
+    margin: 20px 0 20px 40px;
+}
+.sbj-tit:nth-child(1){
+	margin-top: 0;
+}
+.container {
+    text-align: center;
+	border: 1px solid #dadada;
+	border-radius: 20px;
+	margin: 60px auto;
+	padding: 25px 30px;
+	max-width: 500px;
+	background: #fff;
+	box-shadow: 2px 2px 7px 2px rgb(233, 233, 233);
+}
+
+#container{
+	margin:120px auto;
+}
+
+#findForm {
+    background-color: #FFFFFF;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+}
+
+#findForm input {
+    display: block;
+	text-align: center;
+	margin: 20px auto;
+	width: 90%;
+	height: 50px;
+	font-weight: 700;
+	border: 1px solid #ccc;
+	outline:none;
+	border-radius: 10px;
+	font-size: 14px;
+	cursor: pointer;
+	background-color: white;
+}
+
+#findForm input:hover{
+	background-color: rgb(232, 232, 232);
+	transition: 0.3s ease-in-out;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+h3{
+	line-height: 35px;
+}
+
+#pwd, #user-id{
+	font-weight: bold;
+	color: rgb(0, 0, 255);
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	text-decoration-thickness: 1.5px;
+	text-decoration-color: rgb(0, 0, 64);
+	letter-spacing: 0.5px;
+	margin-right: 2px;
+}

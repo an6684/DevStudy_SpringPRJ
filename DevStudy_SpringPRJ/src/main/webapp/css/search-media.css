@@ -1,0 +1,88 @@
+/*
+	작성자 : munhokang
+	작성일 : 2023. 5. 11.
+	comment : 
+		- media query를 이용한 
+			header-select.jsp와 select.jsp 반응형 css file
+*/
+@charset "UTF-8";
+
+@media screen and (max-width: 1000px) {
+	#card-box {
+		padding: 26.8px 0;
+	}
+	embed { margin-top: 10px;}
+	.url-card {
+		width: 25%;
+		padding: 30px 0;
+	}
+	.url-card:hover {
+		transform: none;
+	}
+	.url-title {
+		font-weight: bold;
+		font-size: 16px;
+		height: 40px;
+		padding: 0;
+	}
+	.url-content {
+		height: 30px;
+		font-size: 12px;
+	}
+	#white-bg {
+	    padding: 30px 0;
+	}
+	/* 스크롤 맨위로 올리기 */
+	#swipe-btn {
+		width: 40px;
+	}
+
+}
+@media screen and (max-width: 750px) {
+	#card-box {
+		margin-top: 60px;
+	}
+	.url-card {
+		width: 48%;
+		padding: 15px 0; 
+		margin: 1% 1%;
+		transition: none;
+	}
+	.url-title {
+		font-size: 13px;
+		height: 30px;
+		padding: 0;
+	}
+	.url-content {
+		height: 30px;
+		font-size: 12px;
+	}
+	#white-bg {
+	   padding: 20px 0;
+	}
+	/* 스크롤 맨위로 올리기 */
+	#swipe-btn {
+		width: 40px;
+	}
+}
+@media screen and (max-width: 500px) {
+	.url-card {
+		width: 98%;
+		padding: 15px 0; 
+		margin: 1% 1%;
+		transition: none;
+	}
+	.url-title {
+		font-size: 13px;
+		height: 30px;
+		padding: 0;
+	}
+	.url-content {
+		height: 30px;
+		font-size: 12px;
+	}
+	#white-bg {
+	   padding: 10px 0;
+	}
+}
+

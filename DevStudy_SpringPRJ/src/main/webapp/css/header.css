@@ -1,0 +1,215 @@
+@charset "UTF-8";
+
+header {
+    background: rgb(244, 244, 244, 0.5);
+    transition: 0.7s ease-in-out;
+    position: relative;
+}
+header h4 {
+	font-weight: bold;
+}
+.header-wrap {
+    width: 72%;
+    margin: 0 auto;
+    height: 50px;
+    line-height: 50px;
+}
+.header-wrap .sub-gnb img:first-child {
+	margin-left: 500px;
+}
+h1 a {
+    color: #000;
+    font-size: 2rem;
+    font-weight: bold;
+}
+nav a {
+    color: #333;
+    margin-right: 50px;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+#search-box,
+#account-box {
+	width: 100%;
+    background-color: #fff;
+    z-index: 10;
+    position: absolute;
+    top: 50px;
+}
+.header-slide-wrap {
+    width: 50%;
+    margin: 0 auto;
+    display: none;
+    padding: 40px 0;
+    transition: 0.4s ease-in-out;
+}
+
+#login-span {
+	font-size: 16px;
+    margin: 30px 0 50px 0;
+    color: rgb(130, 130, 130);
+}
+#login-span a {
+    color: rgb(43, 126, 252);
+    text-decoration: underline;
+}
+
+#account-box .label-box div {
+	margin-bottom: 20px;
+}
+#account-box span {
+    display: block;
+}
+
+#account-box .label-box a {
+	display: block;
+    margin-left: 20px;
+    color: rgb(33, 33, 33);
+}
+
+#title{
+	color: #000;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#header a:hover{
+	text-decoration: none;
+	color: #000;
+}
+
+#account-box h4 {
+	border-style: none;
+    font-size: 24px;
+}
+
+#search-box form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+    border-style: none;
+    box-shadow: none;
+}
+
+input::placeholder {
+    font-size: 24px;
+    font-weight: 700;
+}
+#header{
+	font-family: "Malgun Gothic";
+}
+.header-image {
+	font-size: 13px;
+	padding: 0 1rem;
+}
+#header-input-image {
+	font-size: 20.8px;
+    margin-right: 20px;
+    color: #333;
+}
+.label-box a{
+	font-size: 16px;
+}
+#profile {
+	font-size: 16px;
+    margin-bottom: 25px;
+    color: rgb(130, 130, 130);
+}
+#search-box input {
+    width: calc(40% - 15px);
+    padding-left: 100px;
+    padding: 20px 0;
+    outline: none;
+    font-size: 24px;
+    border-style: none;
+}
+.sub-gnb{
+    display: flex;
+    align-items: center;
+}
+#user-nm{
+    font-size: 14px;
+    padding-bottom: 3px;
+}
+.sub-gnb span{
+    font-size: 13px;
+    line-height: 14px;
+    padding-bottom: 2px;
+}
+#state{
+	font-size: 14px;
+	padding-bottom: 2px;
+    color: rgb(0 255 34);
+}
+#chg-admin-btn{
+	border-style: none;
+	cursor: pointer;
+	font-size: 13px;
+    line-height: 14px;
+    background-color: transparent;
+    margin-left: 10px;
+    color: black;
+}
+
+.menu{
+  width:8%;
+  height:30px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align:center;
+  line-height: 30px;
+  border: 1px solid #dadada;
+  background: #fff;
+  box-shadow: 2px 2px 7px 2px rgb(233, 233, 233);
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  right: 78px;
+  top: 8px;
+  z-index: 9999;
+}
+
+.menu span{
+	color: black;
+}
+
+.menu>.sub{
+  display:none;
+  height:120px;
+  list-style:none;
+  overflow:hidden;
+}
+
+.menu>.sub li{
+  background-color:whitesmoke;
+  border-top:1px white solid;
+}
+  
+.menu>.sub li:nth-child(4){
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.menu>.sub li>a{
+  text-decoration:none;
+  color:black;
+}
+
+.menu>.sub.down{
+  height:120px;
+  animation-name:slide_down;
+  animation-duration:1s;
+}
+
+@keyframes slide_down{
+  0%{
+    height:0px;
+  }
+  100%{
+    height:120px;
+  }
+}

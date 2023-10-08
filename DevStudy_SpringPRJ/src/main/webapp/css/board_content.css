@@ -1,0 +1,327 @@
+@charset "UTF-8";
+#fild-download { color:black; cursor: pointer;}
+#fild-download:hover{
+	text-decoration: none;
+}
+#main-content {
+    margin-top: 80px;
+    height: auto;
+}
+.notice-wrap{
+    width: 70%;
+    margin: 0 auto;
+    border-bottom: 2px solid rgb(244, 244, 244);
+}
+
+#count {
+	/*padding: 20px 0;*/
+	border-bottom: 2px solid rgb(244, 244, 244);
+	color: #bbb;
+	font-size: 12px;
+}
+
+#file-label{
+	margin: 0 10px 0 5px;
+}
+#file-label::after{
+	content: "|";
+	margin-left: 10px;
+	color:  rgb(128, 128, 128);
+}
+.file-wrap{
+	margin-bottom: 0;
+	padding: 10px 0;
+	border-top: 2px solid rgb(244, 244, 244);
+	display: flex;
+	font-size: 15px;
+}
+.date {
+	color: #bbb;
+	font-size: 12px;
+}
+
+/* main-content */
+.form-wrap {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.hidden {
+	display: none;
+}
+#contentForm {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#commnt-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#commnt-form span {
+    font-size: 15px;
+    color: #105796;
+    margin-right: 10px;
+}
+
+#comment {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+#submit-button {
+    padding: 10px 20px;
+    background-color: #73d09a;
+    color: #fff;
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+#submit-button:hover {
+    background-color: #105796;
+}
+
+.content-wrap{
+	width: 98%;
+	margin: 0 auto 20px auto;
+	height: auto;
+	min-height: 350px;
+}
+.content-update-button,
+.update-button {
+	display: inline;
+	font-size: 16px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.block {
+	display: block;
+}
+#list-btn {
+  display: block;
+  padding: 10px 20px;
+  background-color: #73d09a;   
+  color: #fff;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 67px;
+  height: 38px;
+  margin: 15px 0 15px 5px;
+}
+
+#edit-btn{
+  display: block;
+  padding: 10px 20px;
+  background-color: #73d09a;   
+  color: #fff;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 67px;
+  height: 38px;
+  margin: 15px 0 15px 5px;
+}
+
+.btn-box{
+	width: 100%;
+	justify-content: space-between;
+	display: flex;
+	margin-top: 20px;
+}
+
+.btn-box2{
+	display: flex;
+}
+
+#del-btn{
+  padding: 10px 20px;
+  background-color: #FF4949;   
+  color: #fff;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 67px;
+  height: 38px;
+  margin: 15px 0 15px 5px;
+}
+#del-btn:hover {
+    background-color: #FF1212;
+}
+
+#submit-button {
+  display: block;
+  padding: 10px 20px;
+  background-color: #73d09a;   
+  color: #fff;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 67px;
+  height: 38px;
+}
+#sub-content {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-top: 2px solid rgb(244, 244, 244);
+    padding-top: 20px;
+}
+
+.comment-wrap {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.comment-wrap .info-wrap {
+    font-size: 12px;
+    color: #888;
+}
+
+.comment-wrap .flex-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-wrap .name {
+    color: #105796;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.comment-wrap .hidden-form-wrap {
+    width: 100%;
+}
+
+.comment-wrap .content {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.delete-button{
+	display: block;
+    padding: 10px 20px;
+    background-color: #FF4949;   
+    color: #fff;
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 67px;
+    height: 38px;
+    font-size: 13px;
+}
+
+.delete-button:hover {
+    background-color: #FF1212;
+}
+
+.update-button{
+	display: block;
+    padding: 10px 20px;
+    background-color: #73d09a;   
+    color: #fff;
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 67px;
+    height: 38px;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.update-button:hover {
+    background-color: #105796;
+}
+
+.t-span {
+    display: block;     
+    font-size: 13px;
+}
+#board{
+	font-family: "Malgun Gothic";
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 20px 0;
+}
+.name {
+	font-family: "Malgun Gothic";
+	color: #105796;
+	font-size: 14px;
+	margin-right: 100px;
+}
+#board-title {
+	font-family: "Malgun Gothic";
+    font-size: 26px;
+    padding: 40px 20px;
+    background: rgb(244, 244, 244, 0.5);
+    margin:0;
+    font-weight: bold;
+}
+
+.flex-box {
+	font-family: "Malgun Gothic";
+	padding: 15px 5px;
+    display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+.hidden-form{
+	width: 98%;
+	margin: 0 auto;
+}
+
+.hidden-form{
+	width: 98%;
+	margin: 0 auto;
+}
+
+.hidden-form input[type="text"] {
+    width: 87%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    margin-left: 10px
+}
+
+.hidden-form button {
+    padding: 10px 20px;
+    background-color: #73d09a;
+    color: #fff;
+    border-style: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.hidden-form button:hover {
+    background-color: #105796;
+}
+#commnt-box{
+	width: 100%;
+	justify-content: space-around;
+}
+#update-form{
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+}
+#commnt-id{
+	margin-left: 5px;
+}
+.user-nm{
+	width: 6%;
+}

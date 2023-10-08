@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+.container {
+    text-align: center;
+	border: 1px solid #dadada;
+	border-radius: 20px;
+	margin: 60px auto;
+	padding: 25px 30px;
+	max-width: 500px;
+	background: #fff;
+	box-shadow: 2px 2px 7px 2px rgb(233, 233, 233);
+}
+
+#container{
+	margin:120px auto;
+}
+
+#findForm {
+    background-color: #FFFFFF;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+}
+
+#findForm input {
+    display: block;
+	text-align: center;
+	margin: 20px auto;
+	width: 90%;
+	height: 50px;
+	font-weight: 700;
+	border: 1px solid #ccc;
+	outline:none;
+	border-radius: 10px;
+	font-size: 14px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#sendEmailBtn,
+#checkAuth,
+#submit-btn{
+	cursor: pointer;
+	background-color: #73d09a;
+	color: white;
+	width: 30%;
+}
+
+#sendEmailBtn:hover,
+#checkAuth:hover,
+#submit-btn:hover{
+	background-color: rgb(99, 203, 143);
+	transition: 0.3s ease-in-out;
+}
+
+input[name=id]::placeholder,
+input[name=name]::placeholder,
+input[name=email]::placeholder,
+input[name=emailNum]::placeholder {
+	color: #ccc;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+h3{
+	line-height: 35px;
+}
+
+#pwd, #user-id{
+	font-weight: bold;
+	color: rgb(0, 0, 255);
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	text-decoration-thickness: 1.5px;
+	text-decoration-color: rgb(0, 0, 64);
+	letter-spacing: 0.5px;
+	margin-right: 2px;
+}

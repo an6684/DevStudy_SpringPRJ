@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="dev.board.BoardMapper">
+
+	<select id="getCount" parameterType="dev.board.BSearchVO" resultType= "Integer">
+		select count(*) 
+			from tb_board_01 
+			<where>
+				<choose>
+ 					<when test="f != null and f.equals('title')">
+	                	and title like CONCAT('%', #{q}, '%')
+                	</when>
+	                <when test="f != null and f.equals('writedid')">
+	                	and writedid like CONCAT('%', #{q}, '%')
+	                </when>
+				</choose>
+				and useFlag="Y"
+			</where> 
+	</select>
+	
+	<select id="boardList" parameterType="dev.board.BSearchVO" resultType="dev.board.BoardVO">
+			select *
+	            from (select @rownum:=@rownum+1 as num ,n.*
+	                from( select 
+								b.content_id,
+						        b.title,
+							    CASE
+							        WHEN u.userRank = 3 THEN CONCAT(SUBSTR(b.writedid, 1, 3), '***')
+							        ELSE b.writedid
+							    END AS writedid,
+							    b.regdate,
+							    b.filepath,
+							    u.userRank
+		                    from tb_board_01 b
+		                    LEFT JOIN
+			    				tb_user_01 u ON b.writedid = u.userId
+		            <where>
+		            	<choose>
+		                	<when test="f != null and f.equals('title')">
+		                    	and b.title like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <when test="f != null and f.equals('writedid')">
+		                    	and b.writedid like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <otherwise>
+		                    	and b.title like CONCAT('%', #{q}, '%')
+		                    </otherwise>
+		                </choose>
+		            	and b.useFlag ='Y'
+		            </where>
+	            order by b.regdate desc)n
+	            where (@rownum:=0)=0)num
+	            where num.num between 1 + (#{p2} - 1 ) * 10 and #{p2} * 10
+	</select>
+	
+	
+	<insert id ="regeditBoard" parameterType = "dev.board.BoardVO">
+		insert into tb_board_01(title,writedid,content,filepath) values(#{title},#{writedid},#{content},#{filepath})
+	</insert>
+	
+	<!-- delete -->    
+	<delete id="delBoard" parameterType="dev.board.BoardVO">
+		delete from tb_board_01
+		where content_id=#{id}
+	</delete>
+	
+	<!-- detail -->
+	<select id="boardDetail" resultType="dev.board.BoardVO" parameterType="Integer">
+	    SELECT
+		    b.content_id,
+		    b.title,
+		    CASE
+		        WHEN u.userRank = 3 THEN CONCAT(SUBSTR(b.writedid, 1, 3), '***')
+		        ELSE b.writedid
+		    END AS writedid,
+		    b.writedid AS original_writedid,
+		    b.content,
+		    b.regdate,
+		    b.filepath,
+		    u.userRank
+	    FROM tb_board_01 b
+	    LEFT JOIN
+		    tb_user_01 u ON b.writedid = u.userId
+	    WHERE b.content_id = #{no} AND b.useFlag = 'Y'
+	</select>
+	
+	<update id="updateBoard" parameterType="dev.board.BoardVO">
+	    UPDATE tb_board_01
+	    SET
+	        title = #{title},
+	        content = #{content},
+	        filepath = #{filepath}
+	    WHERE
+	        content_id = #{content_id}
+	</update>
+	
+	<insert id="insertComment" parameterType = "dev.board.BdCommentVO">
+		insert into tb_board_02(content_id, content, writedid) values (#{content_id}, #{content}, #{writedid})
+	</insert>
+	
+	<select id = "commentList" parameterType = "Integer" resultType = "dev.board.BdCommentVO">
+		select
+			b.comment_id,
+			b.content_id,
+			b.content,
+			b.regdate,
+			CASE
+		        WHEN u.userRank = 3 THEN CONCAT(SUBSTR(b.writedid, 1, 3), '***')
+		        ELSE b.writedid
+		    END AS writedid,
+		    b.writedid AS original_writedid,
+		    u.userRank
+		from tb_board_02 b
+		LEFT JOIN
+		    tb_user_01 u ON b.writedid = u.userId
+		where b.content_id = #{id} and b.useFlag= 'Y'
+		order by b.regdate desc
+	</select> 
+	<!-- 댓글 수정 -->
+	<update id = "updateComment" parameterType = "dev.board.BdCommentVO">
+		update tb_board_02 set content = #{content}
+			where comment_id = #{comment_id} and useFlag = 'Y'
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<update id = "delComment" parameterType = "Integer">
+		update tb_board_02 set useFlag = 'N' where comment_id = #{id}
+	</update>
+	
+</mapper>
+

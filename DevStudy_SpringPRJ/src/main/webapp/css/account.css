@@ -1,0 +1,148 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: black;
+	list-style: none;
+	text-decoration: none;
+}
+
+/* 단일 tag  */
+section {
+	margin-top: 10%;
+	border-top: 1px solid #000;
+	font-size: 0;
+}
+article {
+	width: 50%; 
+	font-size: 10px;
+	padding: 40px 0;
+}
+label {
+	display: inline-block;
+	width: 19%;
+}
+
+/* 불특정 테그에서 사용되는 class  */
+.wrapper {
+	display: flex;
+}
+.form-wrapper {
+	width: 60%;
+	margin: 0 auto;
+}
+.border-box {
+	border-bottom: 1px solid #000;
+}
+input:focus {
+	outline: none;
+}
+.bold { font-weight: 600; }
+.inline { display: inline-block; }
+.title {
+	display: block;
+	margin-bottom: 20px;
+	font-weight: 600;
+}
+section article .border-box input {
+	display: inline-block;
+	padding: 15px 0;
+	width: 80%;
+	border: none;
+}
+
+
+/* login-form  */
+#login { border-right: 1px solid #000; }
+#login #submit-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: 40px 0;
+}
+#login #submit-box p {
+	display: flex;
+	align-items: center;
+}
+#login #submit-box p label {
+	margin-left: 10px;
+}
+#login-button {
+	border: none;
+	background-color: #fff;
+	font-weight: normal;
+	cursor: pointer;
+}
+#find-member-info{
+	display: flex;
+	justify-content: center;
+}
+#find-member-info span { margin: 0 5px; }
+#find-member-info a:hover { color: greenyellow; }
+
+/* account from */
+#tel { display: flex; padding: 15px 0; margin-left: 0;}
+#tel input {
+	width:50%;
+	display: block; height: 19px; padding: 0; box-sizing: border-box;
+}
+
+#join-btn {
+	width: 55px;
+	border: none;
+	background-color: #fff;
+	font-weight: normal;
+	cursor: pointer;
+	margin: 4% 0 0 75%;
+}
+
+#check-btn{
+	border: none;
+	background-color: #fff;
+	font-size: 12px;
+    width: 55px;
+    cursor: pointer;
+}
+
+#flex-box{
+	display: flex;
+}
+#id-label{
+	line-height: 46px;
+	
+}
+
+#btn-box{
+	border-bottom: 0px;
+}
+
+#check-box{
+	margin: 30px auto 15px auto;
+}
+#idChk-ment{
+	font-size: 15px;
+	/*margin-bottom: 15px;*/
+}
+#inputid{
+	height: 20px;
+    border-style: none;
+    border-bottom: 1px solid black;
+    margin-left: 24px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+#resultmessage{
+	margin: 8px 0;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#chk-btn{
+    border-style: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+#close-btn{
+	font-size: 14px;
+}

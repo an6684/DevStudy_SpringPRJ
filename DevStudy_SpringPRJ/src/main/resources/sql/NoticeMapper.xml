@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="dev.notice.NoticeMapper">
+
+	<select id="getCount" parameterType="dev.notice.SearchVO" resultType= "Integer">
+		select count(*) 
+			from tb_notice_01 
+			<where>
+				<choose>
+ 					<when test="f != null and f.equals('title')">
+	                	and title like CONCAT('%', #{q}, '%')
+                	</when>
+	                <when test="f != null and f.equals('writedid')">
+	                	and writedid like CONCAT('%', #{q}, '%')
+	                </when>
+				</choose>
+				and useFlag="Y"
+			</where> 
+	</select>
+
+	<select id="noticeList" parameterType="dev.notice.SearchVO" resultType="dev.notice.NoticeVO">
+			select *
+	            from (select @rownum:=@rownum+1 as num ,n.*
+	                from( select *
+	                    from tb_notice_01
+		            <where>
+		            	<choose>
+		                	<when test="f != null and f.equals('title')">
+		                    	and title like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <when test="f != null and f.equals('writedid')">
+		                    	and writedid like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <otherwise>
+		                    	and title like CONCAT('%', #{q}, '%')
+		                    </otherwise>
+		                </choose>
+		            	and useFlag ='Y'
+		            </where>
+	            order by regdate desc)n
+	            where (@rownum:=0)=0)num
+	            where num.num between 1 + (#{p2} - 1 ) * 10 and #{p2} * 10
+	</select>
+	
+	<insert id ="regeditNotice" parameterType = "dev.notice.NoticeVO">
+		insert into tb_notice_01(title,writedid,content,filepath) values(#{title},#{writedid},#{content},#{filepath})
+	</insert>
+	
+	<!-- delete -->    
+	<delete id="delNotice" parameterType="dev.notice.NoticeVO">
+		delete from tb_notice_01
+		where content_id=#{id}
+	</delete>
+	
+	<!-- detail -->
+	<select id="noticeDetail" resultType="dev.notice.NoticeVO" parameterType="Integer">
+	    SELECT
+		    n.content_id,
+		    n.title,
+		    n.writedid,
+		    n.content,
+		    n.regdate,
+		    n.filepath,
+		    u.userRank
+	    FROM tb_notice_01 n
+	    LEFT JOIN
+		    tb_user_01 u ON n.writedid = u.userId
+	    WHERE n.content_id = #{no} AND n.useFlag = 'Y'
+	</select>
+	
+	<!-- notice update1 -->
+	<update id="updateNotice" parameterType="dev.notice.NoticeVO">
+	    UPDATE tb_notice_01
+	    SET
+	        title = #{title},
+	        content = #{content},
+	        filepath = #{filepath}
+	    WHERE
+	        content_id = #{content_id}
+	</update>
+	
+	<insert id="insertComment" parameterType = "dev.notice.NtCommentVO">
+		insert into tb_notice_02(content_id, content, writedid) values (#{content_id}, #{content}, #{writedid})
+	</insert>
+	
+	<select id = "commentList" parameterType = "Integer" resultType = "dev.notice.NtCommentVO">
+		select
+			n.comment_id,
+			n.content_id,
+			n.content,
+			n.regdate,
+			CASE
+		        WHEN u.userRank = 3 THEN CONCAT(SUBSTR(n.writedid, 1, 3), '***')
+		        ELSE n.writedid
+		    END AS writedid,
+		    n.writedid AS original_writedid,
+			u.userRank
+			from tb_notice_02 n
+			LEFT JOIN
+		    	tb_user_01 u ON n.writedid = u.userId
+			where n.content_id = #{id} and n.useFlag= 'Y'
+			order by n.regdate desc
+	</select>
+	<!-- 댓글 수정 -->
+	<update id = "updateComment" parameterType = "dev.notice.NtCommentVO">
+		update tb_notice_02 set content = #{content}
+			where comment_id = #{comment_id} and useFlag = 'Y'
+	</update>
+
+	<!-- 댓글 삭제 -->
+	<update id = "delComment" parameterType = "Integer">
+		update tb_notice_02 set useFlag = 'N' where comment_id = #{id}
+	</update>
+	
+</mapper>
+

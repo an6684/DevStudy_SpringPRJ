@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+	<!-- ============================================================ -->
+    <!-- Log Appender 설정 -->
+	<!-- ============================================================ -->    
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${SERVICE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>	
+	<!-- ============================================================ -->
+    <!-- Service Log 설정 -->
+	<!-- ============================================================ -->
+	<!-- framework logger -->	
+	<logger name="org.springframework.web" level="INFO" additivity="false"> 
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org.springframework.jdbc" level="INFO" additivity="false"> 
+		<appender-ref ref="STDOUT" />
+	</logger>	
+	<logger name="org.springframework.transaction" level="INFO" additivity="false"> 
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org.apache.ibatis" level="INFO" additivity="false"> 
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<!-- 	
+	<logger name="org.apache.http" level="SECURITY" additivity="false"> 
+		<appender-ref ref="STDOUT" />
+	</logger> 
+	-->
+	<logger name="org.springframework.batch" level="INFO" additivity="false"> 
+		<appender-ref ref="STDOUT" />
+	</logger>	
+	  	
+	<!-- Application Logger -->	
+	<logger name="${APPLICATION_BASE_PACKAGE}" level="INFO" additivity="false"> 
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<root level="INFO">  
+		<appender-ref ref="STDOUT" />  
+	</root>
+</included>

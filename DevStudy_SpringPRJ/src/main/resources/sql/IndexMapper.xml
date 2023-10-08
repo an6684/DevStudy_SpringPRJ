@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="dev.main.IndexMapper">
+
+	<resultMap id="VideoResultMap" type="dev.main.VideoVO">
+        <result column="video_id" property="id" />
+        <result column="video_title" property="title" />
+        <result column="video_description" property="description" />
+        <result column="video_url" property="url" />
+        <result column="video_uploader_id" property="uploader_id" />
+        <result column="video_uploaded_at" property="regdate" />
+        <result column="category_id" property="category_id" />
+    </resultMap>
+
+    <select id="menuList" parameterType="dev.main.MenuVO" resultType="dev.main.MenuVO" >
+        select 
+		    sbj_id, sbj_nm
+			from tb_subject_categories
+    </select>   
+      
+    <select id="videoList" parameterType="dev.main.VideoVO" resultType="dev.main.VideoVO" resultMap="VideoResultMap">
+        <![CDATA[
+			SELECT *
+			FROM (
+			    SELECT
+			        v.*,
+			        ROW_NUMBER() OVER(PARTITION BY v.category_id ORDER BY v.video_uploaded_at DESC) AS rn
+			    FROM tb_video v
+			    WHERE v.useFlag = 'Y'
+			) AS ranked_videos
+			WHERE ranked_videos.rn <= 4;
+		]]>
+    </select>  
+
+    <select id="getVideo" parameterType="Integer" resultType="dev.main.VideoVO" resultMap="VideoResultMap">
+        select 
+		    *
+			from tb_video v
+			inner join tb_subject_categories s on v.category_id = s.sbj_id
+			where v.video_id = #{id} and v.useFlag = 'Y'
+    </select>  
+    
+    <select id="smallList" parameterType="dev.main.VideoVO" resultType="dev.main.VideoVO" resultMap="VideoResultMap">
+        select 
+		    *
+			from tb_video v
+			inner join tb_subject_categories s on v.category_id = s.sbj_id
+			where v.category_id = #{no}
+			and useFlag = 'Y'
+            order by video_uploaded_at desc
+    </select>  
+    
+    <select id="searchList" parameterType="String" resultType="dev.main.VideoVO" resultMap="VideoResultMap">
+        select 
+		    *
+			from tb_video 
+			where LOWER(video_title) like LOWER(CONCAT('%', #{search}, '%'))
+			and useFlag = 'Y'
+            order by video_uploaded_at desc
+    </select>  
+    
+	<select id="selectCartValue" parameterType="Integer" resultType="String">
+	    SELECT cart
+	    FROM tb_video
+	    WHERE video_id = #{videoId}
+	</select>
+    
+    <update id="toggleCartValue" parameterType="Integer">
+    UPDATE tb_video
+    SET cart =
+        CASE
+            WHEN cart = 'Y' THEN 'N'
+            ELSE 'Y'
+        END
+    WHERE video_id = #{videoId}
+</update>
+    
+</mapper>
+
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="dev.member.UserMapper">
+
+    <select id="loginCheck" parameterType="dev.member.LoginVO" resultType="dev.member.MemberVO" >
+        select 
+		    u.userId as id,
+		    u.userName as name,
+		    u.userPass as pass,
+		    u.userEmail as email,
+		    u.`userRank` as `rank`,
+		    u.userHpnum as tel
+		from tb_user_01 u
+		where u.userFlag = 'Y'
+		    and u.userId = #{userid}
+		    and u.userPass = SHA2(#{userpw}, 256);
+    </select>     
+    
+	<insert id="signUp" parameterType="dev.member.MemberVO">
+    	insert into tb_user_01(userId,userPass,userName,userEmail,userRank,userHpnum) values(#{id},SHA2(#{pass}, 256),#{name},#{email},'3',#{tel})
+	</insert>
+	
+	<select id="idCheck" parameterType="String" resultType="Integer" >
+        select count(userId) as IDcnt from tb_user_01 where userID = #{id}
+    </select>  
+    
+    <!-- 개인정보 수정 1.현재 사용하는 비밀번호로 유지할 경우-->
+    <update id = "updateUserWithPasswordMatch" parameterType = "dev.member.MemberVO">
+		update tb_user_01 set userEmail = #{email}, userHpnum = #{tel} where userId = #{id} and userPass = SHA2(#{pass}, 256);
+	</update>
+	
+	<!-- 2. 새로운 비밀번호로 변경할 경우 -->
+    <update id="updateUserWithPasswordChange" parameterType="dev.member.MemberVO">
+        UPDATE tb_user_01
+        SET
+            userEmail = #{email},
+            userHpnum = #{tel},
+            userPass = #{newPassword}
+        WHERE
+            userId = #{id}
+            AND userPass = SHA2(#{pass}, 256);
+    </update>
+    
+    <select id="getHashedPassword" parameterType="String" resultType="String">
+	    SELECT userPass FROM tb_user_01 WHERE userId = #{userId}
+	</select>
+	
+	<!-- 비밀번호 찾기에 사용되는 사용자 조회 -->
+	<select id="selectOneById" parameterType="String" resultType="dev.member.MemberVO" >
+        select userId as id,
+		    userName as name,
+		    userPass as pass,
+		    userEmail as email,
+		    `userRank` as `rank`,
+		    userHpnum as tel
+		from tb_user_01 
+		where userId = #{id}
+    </select>
+    
+    <!-- 비밀번호 변경 -->
+    <update id = "updatePwd" parameterType = "dev.member.MemberVO">
+		update tb_user_01 set userPass = SHA2(#{pass}, 256) where userId = #{id};
+	</update>
+	
+	<!-- 아이디 찾기에 사용되는 사용자 조회 -->
+	<select id="selectOneByID" parameterType="String" resultType="dev.member.MemberVO" >
+        select userId as id,
+		    userName as name,
+		    userPass as pass,
+		    userEmail as email,
+		    `userRank` as `rank`,
+		    userHpnum as tel
+		from tb_user_01 
+		where userName = #{name}
+    </select>
+</mapper>
+
+

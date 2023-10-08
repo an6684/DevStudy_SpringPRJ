@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="dev.admin.AdminMapper">
+
+	<select id="getUserCount" parameterType="dev.admin.USearchVO" resultType= "Integer">
+		select count(*) 
+			from tb_user_01 
+			<where>
+				<choose>
+ 					<when test="f != null and f.equals('userId')">
+	                	and userId like CONCAT('%', #{q}, '%')
+                	</when>
+	                <when test="f != null and f.equals('userName')">
+	                	and userName like CONCAT('%', #{q}, '%')
+	                </when>
+				</choose>
+				and userFlag="Y"
+			</where> 
+	</select>
+	
+	<select id="userList" parameterType="dev.admin.USearchVO" resultType="dev.member.MemberVO" >
+		select *
+	            from (select @rownum:=@rownum+1 as num ,n.*
+	                from( select userId as id,
+						    userName as name,
+						    userPass as pass,
+						    userEmail as email,
+						    `userRank` as `rank`,
+						    userHpnum as tel,
+						    regdate as regdate
+	                    from tb_user_01
+		            <where>
+		            	<choose>
+		                	<when test="f != null and f.equals('userId')">
+		                    	and userId like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <when test="f != null and f.equals('userName')">
+		                    	and userName like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <otherwise>
+		                    	and userId like CONCAT('%', #{q}, '%')
+		                    </otherwise>
+		                </choose>
+		            	and userFlag ='Y'
+		            </where>
+	            order by regdate desc)n
+	            where (@rownum:=0)=0)num
+	            where num.num between 1 + (#{p2} - 1 ) * 10 and #{p2} * 10
+    </select>
+    
+    <select id="getCount" parameterType="dev.notice.SearchVO" resultType= "Integer">
+		select count(*) 
+			from tb_notice_01 
+			<where>
+				<choose>
+ 					<when test="f != null and f.equals('title')">
+	                	and title like CONCAT('%', #{q}, '%')
+                	</when>
+	                <when test="f != null and f.equals('writedid')">
+	                	and writedid like CONCAT('%', #{q}, '%')
+	                </when>
+				</choose>
+				and useFlag="Y"
+			</where> 
+	</select>
+	
+	<select id="adminBoardList" parameterType="dev.board.BSearchVO" resultType="dev.board.BoardVO">
+			select *
+	            from (select @rownum:=@rownum+1 as num ,n.*
+	                from( select *
+	                    from tb_board_01
+		            <where>
+		            	<choose>
+		                	<when test="f != null and f.equals('title')">
+		                    	and title like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <when test="f != null and f.equals('writedid')">
+		                    	and writedid like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <otherwise>
+		                    	and title like CONCAT('%', #{q}, '%')
+		                    </otherwise>
+		                </choose>
+		            	and useFlag ='Y'
+		            </where>
+	            order by regdate desc)n
+	            where (@rownum:=0)=0)num
+	            where num.num between 1 + (#{p2} - 1 ) * 10 and #{p2} * 10
+	</select>
+
+</mapper>
+
+

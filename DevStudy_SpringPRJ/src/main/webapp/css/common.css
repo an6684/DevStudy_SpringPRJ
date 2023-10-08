@@ -1,0 +1,39 @@
+@charset "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+.flex {
+	display: flex;
+}
+.between {
+	justify-content: space-between;
+}
+.align {
+	align-items: center;
+}
+
+.align-center {
+	justify-content: center;
+}
+.around {
+	justify-content: space-around;
+}
+.text-align {
+	text-align: center;
+}
+.block {
+	display: block;
+}
+.none {
+	display: none;
+}
+.inline {
+	display: inline-block;
+}
+.pointer {
+	cursor: pointer;
+}

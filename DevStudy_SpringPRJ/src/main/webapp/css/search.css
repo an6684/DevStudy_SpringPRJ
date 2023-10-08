@@ -1,0 +1,85 @@
+@charset "UTF-8";
+a { color: black; }
+img,
+embed {
+    vertical-align: bottom;
+}
+span {
+	display: block;
+}
+
+#card-box {
+	background: rgb(244, 244, 244, 0.5);
+	padding-top: 53.8px;
+	color: black;
+}
+/* 검색된 content 영역 */
+.wrap {
+	width: 95%;
+	margin: 0 auto;
+	font-size: 0;
+}
+.url-card {
+	display: inline-block;
+	width: calc(25% - 3%);
+	text-align: center;
+	font-size: 13px;
+	background-color: #fff;
+	margin: 0 1.5%;
+	margin-bottom: 3%;  
+	padding: 35px 0;
+	border-radius: 10px;
+	box-shadow: 3px 5px 10px rgba(200, 200, 200, 0.2);
+	transition: 0.5s;
+}
+.url-card:hover {
+	transform: scale(1.05);
+}
+.url-card span {
+	text-align: left;
+	width: 90%;
+	margin: 5px auto;
+}
+.url-title {
+	font-weight: bold;
+	font-size: 23px;
+	height: 65px;
+	padding-bottom: 10px;
+}
+.url-content {
+	display: block;
+	height: 50px;
+}
+.url-card embed {
+	width: 90%;
+	height: 233px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+/* parameter 변수(search) 영역  */
+#white-bg {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 14px;
+    background-color: #fff;
+}
+#white-bg span {  margin: 0; display: inline; }
+.h2-title-gray {
+	 color: rgb(77, 76, 76); 
+}
+
+/* 스크롤 맨위로 올리기 */
+#swipe-btn {
+	position: fixed;
+	bottom: 10%;
+    right: 10px;
+    width: 45px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+#guide-text {
+	text-align: cneter;
+	background-color: red;
+}

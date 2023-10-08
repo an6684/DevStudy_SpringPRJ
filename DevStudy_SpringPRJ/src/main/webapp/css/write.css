@@ -1,0 +1,115 @@
+section {
+	width: 60%;
+	margin: 0 auto;
+}
+h4 {
+    margin: 80px 0 20px 0;
+    border-bottom: 1px solid #ccc;
+	padding: 20px 0;
+	margin: 50px 0;
+}
+
+form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+#delete-file {
+    background-color: #f9f9f9;
+    padding: 5px;
+    cursor: default;
+    outline: none;
+    text-align: center;
+}
+
+.file-del-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: rgb(87, 87, 87);
+    border: none;
+    border-radius: 5px;
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#file{
+	display: block;
+}
+
+.btn-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#list-btn,
+#submit-button {
+    padding: 10px 20px;
+    background-color: #73d09a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 67px;
+    height: 38px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+#list-btn:hover,
+#submit-button:hover {
+    background-color: #105796;
+}
+
+#board-title{
+	font-size: 25.6px;
+	font-family: "Malgun Gothic";
+	margin: 50px 0;
+	padding: 20px 0;
+	font-weight: bold;
+}
+.note-editable{
+	height: auto;
+	min-height: 500px;
+}
+
+#notice-tit,
+#notice-author,
+#notice-content{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#file-label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #105796;
+    margin-bottom: 10px;
+}
+
+.notice-tit,
+.notice-author,
+.notice-content{
+	margin-top: 10px;
+}
