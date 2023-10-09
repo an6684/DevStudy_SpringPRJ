@@ -15,51 +15,6 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	
-	<!-- Message 관련 설정 -->
-	<!-- <bean id="messageSourceAccessor" class="org.springframework.context.support.MessageSourceAccessor">
-		<constructor-arg ref="messageSource" />
-		<constructor-arg value="ko_KR" />	Locale 설정
-	</bean> -->
-	
-	<!-- 해당 프로퍼티 파일이 변경되었을 경우 애플리케이션을 다시 시작할 필요가 없이 변경이 가능한 ReloadableResourceBundleMessageSource 적용 -->
-	<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>classpath:/message/msg</value>
-			</list>
-		</property>
-		<property name="defaultEncoding" value="UTF-8" />
-		<property name="cacheSeconds" value="60" />
-	</bean> -->
-	<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource" >
-		<property name="defaultEncoding" value="UTF-8" />
-		<property name="basenames">
-			<list>
-				<value>classpath:/message/message</value>
-			</list>
-		</property>
-		<property name="fallbackToSystemLocale" value="false" />
-		<property name="cacheSeconds" value="10"/>
-	</bean>
- 
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" >
-		<property name="defaultLocale" value="ko" />
-	</bean>
-
-    <bean id="messageSourceAccessor" class="org.springframework.context.support.MessageSourceAccessor">
-        <constructor-arg ref="messageSource"/>
-    </bean> 
-    
-    
-    <bean id="message" class="dev.common.LocaleMessage">
-        <property name="messageSourceAccessor" ref="messageSourceAccessor"/>
-    </bean> -->
-	
-	<!-- <mvc:resources mapping="/resources/**" location="/resources/" /> -->
-	<!-- <mvc:resources mapping="/js/**" location="/js/" />
-	<mvc:resources mapping="/css/**" location="/css/" />
-	<mvc:resources mapping="/img/**" location="/img/" /> -->
-	<!-- <mvc:resources mapping="/**" location="/" /> -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter" />

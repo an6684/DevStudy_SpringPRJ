@@ -1,0 +1,76 @@
+@charset "UTF-8";
+body {
+	font-size: 10px;
+}
+select {
+	width: 30%;
+	padding: 0 0.5rem;
+	margin-right: 2rem;
+}
+#title {
+	font-size: 1rem;
+}
+#description {
+	margin: 2rem 0;
+}
+p {
+	font-style: oblique;
+}
+samll {
+	margin-top: auto;
+}
+#update-form > div:nth-child(1) {
+	padding-top: 0;
+}
+.fa-brands {
+	color: #f00;
+	font-size: 1.7rem;
+}
+label {
+	display: block;
+	width: 20%;
+}
+textarea {
+	resize: none;
+}
+embed {
+	display: block;
+  max-width: 882px;
+	max-height: 496.13px; 
+}
+#update-form {
+	margin-bottom: 1rem;
+}
+#update-form .border-bottom{
+	padding: 1rem 0;
+}
+#update-form .border-bottom input, textarea {
+	border: none;
+	outline: none;
+}
+.border-bottom input, textarea {
+	width: 30%;
+		margin-right: 2rem;
+}
+#link::placeholder {
+	font-size: 0.7rem;
+	color: grey;
+}
+#count {
+	display: block;
+	margin-top: auto;
+}
+
+#submit {
+	margin-left: auto;
+	background-color: #fff;
+	border: none;
+	transition: 0.5s ease-in;
+}
+#submit:hover {
+	transition: 0.5s ease-in;
+	color: #73d09a;
+}
+.wrap{
+	margin: 40px auto;
+}

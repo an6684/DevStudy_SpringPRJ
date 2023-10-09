@@ -13,7 +13,12 @@ public interface IndexMapper {
 	
 	List<VideoVO> searchList(String param);
 	
-	String selectCartValue(int param);
+	int insertToCart(CartVO param);
 	
-	int toggleCartValue(int param);
+	CartVO selectCart(CartVO param);
+
+	int deleteFromCart(CartVO pararm);
+	
+	List<VideoVO> cartList(String param);
+
 }

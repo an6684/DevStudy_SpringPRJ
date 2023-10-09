@@ -31,10 +31,37 @@ public class IndexSvc {
 		return indexMapper.searchList(param);
 	}
 	
-	public String toggleCartValue(int param) {
-        String currentCartValue = indexMapper.selectCartValue(param);
-        String newCartValue = (currentCartValue.equals("Y")) ? "N" : "Y";
-        indexMapper.toggleCartValue(param);
-        return newCartValue;
+	public String toggleCartValue(CartVO cv) {
+        String user_id = cv.getUser_id(); 
+        int video_id = cv.getId(); 
+
+        CartVO existingCart = indexMapper.selectCart(cv);
+
+        if (existingCart == null) {
+            // 관심목록에 없으면 추가
+            indexMapper.insertToCart(cv);
+            return "Y";
+        } else {
+            // 이미 관심목록에 있으면 삭제
+            indexMapper.deleteFromCart(cv);
+            return "N";
+        }
     }
+	
+	public List<VideoVO> cartList(String param){
+		return indexMapper.cartList(param);
+	}
+	
+	public String selectCart(CartVO cv) {
+		String user_id = cv.getUser_id(); 
+        int video_id = cv.getId(); 
+
+        CartVO existingCart = indexMapper.selectCart(cv);
+
+        if (existingCart == null) {
+            return "Y";
+        } else {
+            return "N";
+        }
+	}
 }

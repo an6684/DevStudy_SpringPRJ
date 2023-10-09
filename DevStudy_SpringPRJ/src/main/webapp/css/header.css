@@ -17,11 +17,7 @@ header h4 {
 .header-wrap .sub-gnb img:first-child {
 	margin-left: 500px;
 }
-h1 a {
-    color: #000;
-    font-size: 2rem;
-    font-weight: bold;
-}
+
 nav a {
     color: #333;
     margin-right: 50px;
@@ -66,13 +62,6 @@ nav a {
 	display: block;
     margin-left: 20px;
     color: rgb(33, 33, 33);
-}
-
-#title{
-	color: #000;
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-decoration: none;
 }
 
 #header a:hover{
@@ -134,11 +123,6 @@ input::placeholder {
 #user-nm{
     font-size: 14px;
     padding-bottom: 3px;
-}
-.sub-gnb span{
-    font-size: 13px;
-    line-height: 14px;
-    padding-bottom: 2px;
 }
 #state{
 	font-size: 14px;
@@ -213,3 +197,4 @@ input::placeholder {
     height:120px;
   }
 }
+

@@ -19,6 +19,15 @@
 .align-center {
 	justify-content: center;
 }
+.align-bottom {
+	align-items: baseline;
+}
+.align-top {
+	align-items: start;
+}
+.text-align {
+	text-align: center;
+}
 .around {
 	justify-content: space-around;
 }
@@ -36,4 +45,24 @@
 }
 .pointer {
 	cursor: pointer;
+}
+.grey {
+	color: grey;
+}
+.border-bottom {
+	border-bottom: 1px solid #999;
+}
+.font {
+	font-size: 0.7rem;
+}
+.bold {
+	font-weight: bold;
+}
+img,
+embed {
+    vertical-align: bottom;
+}
+.wrap {
+	width: 60%;
+	margin: 0 auto;
 }

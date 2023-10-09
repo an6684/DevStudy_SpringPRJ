@@ -1,0 +1,127 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+body {
+	font-size: 10px;
+}
+#board-section {
+	min-height: calc(100vh - 20rem);
+	width: 80%;
+	margin: 40px auto;
+}
+#ohter {
+	height: 10rem;
+}
+#align-option {
+	text-align: right;
+	outline: none;
+	margin-bottom: 2rem;
+}
+table {
+  border-collapse: collapse; /* 테이블 셀 간의 간격 없애기 */
+  width: 100%; /* 테이블이 가로로 꽉 차게 */
+  text-align: center;
+}
+th {
+  border-top: 1px solid #999; /* 셀 경계선 */
+  border-bottom: 1px solid #999; /* 셀 경계선 */
+  padding: 1.2rem 0; /* 안쪽 여백 */
+}
+td {
+  padding: 1.2rem 0; /* 안쪽 여백 */
+}
+tr{ 
+	border-bottom: 1px solid #ddd; /* 셀 경계선 */
+}
+embed {
+	width: 6rem;
+	margin-right: 2rem;
+	min-width: 96px;
+	min-height: 54px;
+}
+.video {
+	text-align: left;
+}
+.video-title {
+	margin-bottom: 1rem;
+}
+.video-description {
+	font-weight: 300;
+}
+.video-number,
+.video-date,
+.video-hit {
+	width: 10%;
+}
+.table-button {
+	margin-right: 1rem;
+}
+#delete-button {
+	margin: 0;
+}
+
+#search-form {
+	width: 55%;
+	margin: 2rem auto 0 auto;
+	border: 1px solid #000;
+}
+#search-form > * {
+	padding: 0.7rem;
+	border: none;
+	outline: none;
+	border-right: none;
+	font-size: 0.7rem;
+}
+#search-form select {
+	width: 20%;
+	border-right: 1px solid #000;
+}
+#search-form input {
+	width: 80%;
+}
+#search-form input::placeholder {
+	font-size: 0.6rem;
+}
+#button-wrap {
+	margin-left: auto;
+}
+#qna-button {
+	display: inline-block;
+	font-size: 0.7rem;
+	background-color: #fff;
+	border:none;
+}
+#qna-button:hover {
+	text-decoration: underline;
+	text-decoration-color: #73d09a;
+	text-underline-position : under;
+}
+#data-none {
+	padding: 3rem 0;
+}
+#page-nation {
+	margin-top: 2rem;
+}
+#page-nation a {
+	display: block;
+	width: 2rem;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	font-size: 0.7rem;
+}
+.currentPage {
+	background-color: #73d09a;   
+	color: #fff;
+	font-weight: bold;
+	border-radius: 50%;
+}
+.hidden {
+	visibility: hidden;
+}

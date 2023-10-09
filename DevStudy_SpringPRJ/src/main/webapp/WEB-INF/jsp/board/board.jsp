@@ -79,16 +79,6 @@
 				<c:set var="startNum" value="${page-(page-1)%5}"></c:set>
 				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
 					 
-				<!-- 현재 페이지 -->
-				<!--
-				<div>
-					<div>
-						<span>현재 페이지 ${page} </span> / ${lastNum} pages
-					</div>
-				</div>
-				-->
-			
-				<!-- 페이징처리 시작 -->
 				<!-- 이전 페이지 -->
 				<div style="display:flex; align-items:center">
 					<c:if test="${startNum > 1 }">

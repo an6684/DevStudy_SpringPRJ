@@ -13,5 +13,4 @@ public class VideoVO {
 	private String uploader_id;
 	private Date regdate;
 	private int category_id;
-	private String cart;
 }

@@ -66,8 +66,6 @@
 
 	</section>
 
-	<%-- <%@include file="./footer.jsp"%> --%>
-
 	<script src="js/write.js"></script>
 	<script src="js/header.js?after"></script>
 	<script>

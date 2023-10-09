@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/common.css?ver=1.1">
-<link rel="stylesheet" href="css/header.css?ver=2.517">
+<link rel="stylesheet" href="css/header.css?ver=2.53">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
@@ -25,7 +25,7 @@
 			
 			<nav class="flex">
 				<h1 id="title">
-					<a href="/">DevStudy</a>
+					<a id="logo" href="/">DevStudy</a>
 				</h1>
 				<c:forEach var="sj" items="${ subject }">
 					<a href="category?id=${ sj.sbj_id }">${ sj.sbj_nm }</a> 
@@ -107,7 +107,7 @@
 							<c:otherwise>
 								 <div class="flex align">
 									<i class="fa-solid fa-bookmark inline"></i>
-									<a href='wish'>관심 목록</a>
+									<a href='category?id=6'>관심 목록</a>
 								 </div>
 								 
 								 <div class="flex align">
@@ -122,7 +122,7 @@
 					                <c:when test="${sessionScope.userrank eq '2'}">
 					                	<div class="flex align">
 						                	<i class="fa-solid fa-laptop-code inline"></i>
-						                    <a href="management">학습 관리</a>
+						                    <a href="lecture">학습 관리</a>
 					                    </div>
 					                </c:when>
 					                <c:otherwise>										

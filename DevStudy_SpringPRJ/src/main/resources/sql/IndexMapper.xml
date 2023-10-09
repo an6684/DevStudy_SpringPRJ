@@ -60,21 +60,31 @@
             order by video_uploaded_at desc
     </select>  
     
-	<select id="selectCartValue" parameterType="Integer" resultType="String">
-	    SELECT cart
-	    FROM tb_video
-	    WHERE video_id = #{videoId}
+	<!-- 관심목록 추가 -->
+	<insert id="insertToCart" parameterType="dev.main.CartVO">
+	    INSERT INTO tb_cart (video_id, user_id)
+	    VALUES (#{id}, #{user_id})
+	</insert>
+	
+	<select id="selectCart" parameterType="dev.main.CartVO" resultType="dev.main.CartVO">
+	    SELECT *
+	    FROM tb_cart
+	    WHERE video_id = #{id} AND user_id = #{user_id}
 	</select>
-    
-    <update id="toggleCartValue" parameterType="Integer">
-    UPDATE tb_video
-    SET cart =
-        CASE
-            WHEN cart = 'Y' THEN 'N'
-            ELSE 'Y'
-        END
-    WHERE video_id = #{videoId}
-</update>
+	
+	<!-- 관심목록 해제 -->
+	<delete id="deleteFromCart" parameterType="dev.main.CartVO">
+	    DELETE FROM tb_cart
+	    WHERE video_id = #{id} AND user_id = #{user_id}
+	</delete>
+	
+	<!-- 관심목록 조회 -->
+	<select id="cartList" parameterType="String" resultType="dev.main.VideoVO" resultMap="VideoResultMap">
+		SELECT V.*
+		FROM tb_cart C
+		INNER JOIN tb_video V ON C.video_id = V.video_id
+		WHERE C.user_id = #{userId} ORDER BY regdate desc
+	</select>
     
 </mapper>
 

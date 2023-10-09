@@ -55,14 +55,30 @@ public class IndexCtr {
      * education page. 
      */
     @RequestMapping(value = "education")
-    public String educationPage(HttpServletRequest request, ModelMap modelMap) {
+    public String educationPage(HttpServletRequest request, ModelMap modelMap, CartVO cv) {
+    	HttpSession session = request.getSession();
+    	String userId = (String) session.getAttribute("userid");
     	String id2 = request.getParameter("id");
 		int contentid = Integer.parseInt(id2);
 
 		String gid2 = request.getParameter("group");
 		int categoryid = Integer.parseInt(gid2);
 		
+		
 		VideoVO vv = indexSvc.getVideo(contentid);
+		
+		cv.setId(vv.getId());
+    	cv.setUser_id(userId);
+    	System.out.println("비디오 번호: "+cv.getId());
+    	System.out.println("유저 아이디: "+cv.getUser_id());
+    	
+    	String newCartValue = indexSvc.selectCart(cv);
+    	
+    	if("Y".equals(newCartValue)){
+    		request.setAttribute("newCartValue", "Y");
+    	}else {
+    		request.setAttribute("newCartValue", "N");
+    	}
 		
     	//video list
     	List<VideoVO> smallList = indexSvc.smallList(categoryid);
@@ -78,12 +94,18 @@ public class IndexCtr {
      * category page. 
      */
     @RequestMapping(value = "category")
-    public String categoryPage(HttpServletRequest request, ModelMap modelMap, VideoVO vv) {
+    public String categoryPage(HttpServletRequest request, ModelMap modelMap, VideoVO vv, HttpSession session) {
+    	String userId = (String) session.getAttribute("userid");
     	String id2 = request.getParameter("id");
 		int contentid = Integer.parseInt(id2);
 		
     	//video list
     	List<VideoVO> smallList = indexSvc.smallList(contentid);
+    	
+    	//관심목록 조회
+    	if(contentid==6) {
+    		smallList = indexSvc.cartList(userId);
+    	}
     	
     	modelMap.addAttribute("videos", smallList);
     	
@@ -110,15 +132,19 @@ public class IndexCtr {
      */
     @PostMapping("/toggleCart")
     @ResponseBody
-    public String toggleCart(@RequestParam("videoId") int videoId) {
-        // 클라이언트에서 전달한 videoId를 사용
-        // VideoVO 객체를 생성하고 id 필드를 설정
-        VideoVO videoVO = new VideoVO();
-        videoVO.setId(videoId);
-        
-        // videoService를 통해 비디오 토글 작업 수행
-        String newCartValue = indexSvc.toggleCartValue(videoId);
-        
+    public String toggleCart(@RequestParam("videoId") int videoId, CartVO cv, HttpSession session) {
+    	String userId = (String) session.getAttribute("userid");
+    	
+    	cv.setId(videoId);
+    	cv.setUser_id(userId);
+    	
+    	System.out.println("비디오 번호: "+cv.getId());
+    	System.out.println("유저 아이디: "+cv.getUser_id());
+    	
+    	String newCartValue = indexSvc.toggleCartValue(cv);
+    	
+    	System.out.println("newCartValue: "+newCartValue);
+    	
         return newCartValue;
     }
     
