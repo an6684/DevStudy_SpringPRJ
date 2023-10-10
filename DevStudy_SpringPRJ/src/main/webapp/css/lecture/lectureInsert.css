@@ -71,6 +71,7 @@ embed {
 	transition: 0.5s ease-in;
 	color: #73d09a;
 }
-.wrap{
+.lecture-wrap{
+	width: 70%;
 	margin: 40px auto;
 }

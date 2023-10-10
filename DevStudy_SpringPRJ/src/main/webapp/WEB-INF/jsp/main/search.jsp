@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="css/search.css?ver=1.2">
+<link rel="stylesheet" href="css/common.css?ver=1.3">
 <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/header.css?ver=2.518">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

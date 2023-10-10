@@ -38,7 +38,8 @@
                 <tbody>
                     <c:forEach var="nl" items="${noticeList}" varStatus="loop">
                         <tr>
-                            <td>${loop.index + 1}</td>
+                            <%-- <td>${loop.index + 1}</td> --%>
+                            <td>${(page - 1) * 10 + loop.index + 1}</td>
                             <td>
                             	<input type="hidden" value="${nl.filepath}" name="filepath" />
                             	<a href="noticeDetail?id=${nl.content_id}">
@@ -70,7 +71,6 @@
             </c:if>
             <div class="paging">
             	<input type="hidden" value=${count}>
-				<%-- <p>총 <strong class="color-dbl">${count}</strong>건이 조회되었습니다.</p> --%>
 				<c:if test="${count ==0}">
 					<p>검색 결과가 없습니다.</p>
 	            </c:if>

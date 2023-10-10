@@ -50,6 +50,9 @@
 		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 			<property name="basePackage" value="dev.admin"></property>
 		</bean>
+		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			<property name="basePackage" value="dev.lecture"></property>
+		</bean>
 		
 		<bean id="sqlSession"
 			class="org.mybatis.spring.SqlSessionFactoryBean">

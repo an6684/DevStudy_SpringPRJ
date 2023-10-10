@@ -7,16 +7,16 @@
 <meta charset="UTF-8">
 <title>강의 등록</title>
 <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="css/common.css?ver=1.2">
+<link rel="stylesheet" href="css/common.css?ver=1.4">
 <link rel="stylesheet" href="css/header.css?ver=1">
-<link rel="stylesheet" href="css/lecture/lectureInsert.css?ver=1">
+<link rel="stylesheet" href="css/lecture/lectureInsert.css?ver=1.2">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
 	<jsp:include page="../common/header.jsp" />
-	<section class="wrap">
+	<section class="wrap lecture-wrap">
 	
 	<h3 id="title">Upload Lecture</h3>
 	
@@ -69,7 +69,7 @@
 	
 	
 	<c:if test="${ empty video }">
-		<form id="update-form" method="post" action="/lectureInsert">
+		<form id="update-form" method="post" action="lectureInsert">
 			<div class="border-bottom flex align">
 				<label>TITLE</label>
 				<input type="text" name="title" class="content-input input">
@@ -88,6 +88,7 @@
 			<div class="border-bottom flex align">
 				<label>CATEGORY</label>
 				<select name="url">
+					<option value="0">카테고리 선택</option>
 					<option value="1">HTML/CSS</option>
 					<option value="2">JavaScript</option>
 					<option value="3">DataBase</option>

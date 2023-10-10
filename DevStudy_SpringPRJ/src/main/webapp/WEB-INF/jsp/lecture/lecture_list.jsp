@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.sql.*"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,9 +38,10 @@
 					<th></th>
 				</tr>
 				
-				<c:forEach var="video" items="${ videos }" >
+				<c:forEach var="video" items="${ videos }" varStatus="loop">
 				<tr>
-					<td class="video-number">${video.id}</td>
+					<%-- <td class="video-number">${video.id}</td> --%>
+					<td>${loop.index + 1}</td>
 					<td class="video-title">
 						<a href="/education?id=${video.id}&group=${video.category_id}" class="flex align pointer video">
 							<embed controls=0
@@ -50,14 +53,14 @@
 							</div>
 						</a>
 					</td>
-					<td class="video-date">${ video.uploaded_at }</td>
-					<td class="video-hit">${ video.hit }</td>
+					<td class="video-date">${ video.regdate }</td>
 					<td>
 						<a href="/lectureInsert?id=${ video.id }" class="table-button pointer">수정</a>
 						<a href="/lectureDelete?id=${ video.id }" class="table-button delete-button pointer">삭제</a>
 				</tr>
 				</c:forEach>
 				</table>
+				<a href="lectureInsert" id="qna-button" class="pointer">강의 등록</a>
 			</article>
 			
 			<c:if test="${ empty videos }">
@@ -65,8 +68,89 @@
 					<span>검색된 결과가 없습니다.</span>
 				</div>
 			</c:if>
-	</section>
-	<section id="ohter">
+		</section>
+		<div class="paging">
+            	<input type="hidden" value=${count}>
+				<c:if test="${count ==0}">
+					<p>검색 결과가 없습니다.</p>
+	            </c:if>
+	            
+	            <!-- 변수선언 -->
+				<c:set var="page" value="${empty param.p?1:param.p}"></c:set>
+				<c:set var="startNum" value="${page-(page-1)%5}"></c:set>
+				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
+					 
+				<!-- 이전 페이지 -->
+				<div style="display:flex; align-items:center">
+					<c:if test="${startNum > 1 }">
+				        <c:choose>
+						    <c:when test="${empty param.boardid}">
+						        <a href="?p=${startNum-1}&f=${param.f}&q=${param.q}">Prev</a>
+						    </c:when>
+						    <c:otherwise>
+						        <a href="?boardid=${param.boardid}&p=${startNum-1}&f=${param.f}&q=${param.q}">Prev</a>
+						    </c:otherwise>
+						</c:choose>
+					</c:if>
+					<c:if test="${startNum <= 1 }">
+						<a href="#" onclick="alert('첫 페이지입니다.');">Prev</a>
+					</c:if>
+				
+					<!-- 숫자 페이지 -->
+					<ul style="display: flex;padding-right:40px;">
+						<c:forEach var="i" begin="0" end="4">
+							<c:if test="${param.p==(startNum+i)}">
+								<c:set var="style" value="font-weight:bold; color:red;" />
+							</c:if>
+							<c:if test="${param.p!=(startNum+i)}">
+								<c:set var="style" value="" />
+							</c:if>
+							<c:if test="${(startNum+i) <=lastNum }">
+								<li style = "margin-right : 10px; list-style: none;">
+									<c:choose>
+									    <c:when test="${empty param.boardid}">
+									        <a style="${style}" href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a>
+									    </c:when>
+									    <c:otherwise>
+									        <a style="${style}" href="?boardid=${param.boardid}&p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a>
+									    </c:otherwise>
+									</c:choose>
+								</li>
+							</c:if>
+						</c:forEach>
+					</ul>
+				
+					<!-- 다음 페이지 -->
+					<c:if test="${startNum+5 <= lastNum }">
+						<c:choose>
+						    <c:when test="${empty param.boardid}">
+						        <a href="?p=${startNum+5}&f=${param.f}&q=${param.q}">Next</a>
+						    </c:when>
+						    <c:otherwise>
+						        <a href="?boardid=${param.boardid}&p=${startNum+5}&f=${param.f}&q=${param.q}">Next</a>
+						    </c:otherwise>
+						</c:choose>
+					</c:if>
+					<c:if test="${startNum+5 >lastNum }">
+						<a href="#" onclick="alert('마지막 페이지입니다.');">Next</a>
+					</c:if>
+				</div>
+			</div>
+			<!--  검색 -->
+			<form action="" method="get">
+				<div class="clear">
+					<select name="f" class="f-l">
+						<option ${(param.f=="title")?"selected":""} value="title">제목</option>
+						<option ${(param.f=="description")?"selected":""} value=description>내용</option>
+					</select>
+					<input type="text" name="q" class="search01 f-l" /> 
+			        <c:if test="${not empty param.boardid}">
+			            <input type="hidden" name="boardid" value="${param.boardid}" />
+			        </c:if>
+					<input type="submit" value="검색" class="btn-search01 f-l">
+				</div>
+			</form>
+	<%-- <section id="ohter">
 		<c:if test="${ not empty startNum && not empty numOfPages}">
 			<!-- #### pageNation #### -->
 			<div id="page-nation" class="flex center">
@@ -95,7 +179,7 @@
 				<button id="search-button" class="none">검색</button>
 			</div>
 		</form>
-	</section>
+	</section> --%>
 	
 	<script src="js/header.js?ver=1"></script>
 	<script type="module">

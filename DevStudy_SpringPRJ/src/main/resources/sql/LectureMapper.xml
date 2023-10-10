@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="dev.lecture.LectureMapper">
+
+	<resultMap id="VideoResultMap" type="dev.main.VideoVO">
+        <result column="video_id" property="id" />
+        <result column="video_title" property="title" />
+        <result column="video_description" property="description" />
+        <result column="video_url" property="url" />
+        <result column="video_uploader_id" property="uploader_id" />
+        <result column="video_uploaded_at" property="regdate" />
+        <result column="category_id" property="category_id" />
+    </resultMap>
+    
+	<select id="getVideoCount" parameterType="dev.lecture.LSearchVO" resultType= "Integer">
+		select count(*) 
+			from tb_video 
+			<where>
+				<choose>
+ 					<when test="f != null and f.equals('title')">
+	                	and video_title like CONCAT('%', #{q}, '%')
+                	</when>
+	                <when test="f != null and f.equals('description')">
+	                	and video_description like CONCAT('%', #{q}, '%')
+	                </when>
+				</choose>
+				and video_uploader_id = #{uploader_id}
+			</where> 
+	</select>
+	
+	<select id="getVideoList" parameterType="dev.lecture.LSearchVO" resultType="dev.main.VideoVO" resultMap="VideoResultMap">
+			select *
+	            from (select @rownum:=@rownum+1 as num ,n.*
+	                from( select *
+	                    from tb_video
+		            <where>
+		            	<choose>
+		                	<when test="f != null and f.equals('title')">
+		                    	and video_title like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <when test="f != null and f.equals('uploader_id')">
+		                    	and uploader_id like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <otherwise>
+		                    	and video_title like CONCAT('%', #{q}, '%')
+		                    </otherwise>
+		                </choose>
+		                and video_uploader_id = #{uploader_id}
+		            </where>
+	            order by video_uploaded_at desc)n
+	            where (@rownum:=0)=0)num
+	            where num.num between 1 + (#{p2} - 1 ) * 10 and #{p2} * 10
+	</select>
+	
+	<insert id ="lectureInsert" parameterType = "dev.main.VideoVO">
+		insert into tb_video(video_title,video_description,video_url,video_uploader_id,category_id)
+		values(#{title},#{description},#{url},#{uploader_id},#{category_id})
+	</insert>
+	
+	<!-- 
+	delete    
+	<delete id="delBoard" parameterType="dev.board.BoardVO">
+		delete from tb_board_01
+		where content_id=#{id}
+	</delete>
+	
+	detail
+	<select id="boardDetail" resultType="dev.board.BoardVO" parameterType="Integer">
+	    SELECT
+		    b.content_id,
+		    b.title,
+		    CASE
+		        WHEN u.userRank = 3 THEN CONCAT(SUBSTR(b.writedid, 1, 3), '***')
+		        ELSE b.writedid
+		    END AS writedid,
+		    b.writedid AS original_writedid,
+		    b.content,
+		    b.regdate,
+		    b.filepath,
+		    u.userRank
+	    FROM tb_board_01 b
+	    LEFT JOIN
+		    tb_user_01 u ON b.writedid = u.userId
+	    WHERE b.content_id = #{no} AND b.useFlag = 'Y'
+	</select>
+	
+	<update id="updateBoard" parameterType="dev.board.BoardVO">
+	    UPDATE tb_board_01
+	    SET
+	        title = #{title},
+	        content = #{content},
+	        filepath = #{filepath}
+	    WHERE
+	        content_id = #{content_id}
+	</update>
+	
+	<insert id="insertComment" parameterType = "dev.board.BdCommentVO">
+		insert into tb_board_02(content_id, content, writedid) values (#{content_id}, #{content}, #{writedid})
+	</insert>
+	
+	<select id = "commentList" parameterType = "Integer" resultType = "dev.board.BdCommentVO">
+		select
+			b.comment_id,
+			b.content_id,
+			b.content,
+			b.regdate,
+			CASE
+		        WHEN u.userRank = 3 THEN CONCAT(SUBSTR(b.writedid, 1, 3), '***')
+		        ELSE b.writedid
+		    END AS writedid,
+		    b.writedid AS original_writedid,
+		    u.userRank
+		from tb_board_02 b
+		LEFT JOIN
+		    tb_user_01 u ON b.writedid = u.userId
+		where b.content_id = #{id} and b.useFlag= 'Y'
+		order by b.regdate desc
+	</select> 
+	댓글 수정
+	<update id = "updateComment" parameterType = "dev.board.BdCommentVO">
+		update tb_board_02 set content = #{content}
+			where comment_id = #{comment_id} and useFlag = 'Y'
+	</update>
+
+	댓글 삭제
+	<update id = "delComment" parameterType = "Integer">
+		update tb_board_02 set useFlag = 'N' where comment_id = #{id}
+	</update> -->
+	
+</mapper>
+

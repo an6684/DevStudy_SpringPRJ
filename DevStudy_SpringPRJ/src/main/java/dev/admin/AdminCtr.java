@@ -35,7 +35,7 @@ public class AdminCtr {
 	 * 회원 관리 리스트
 	 */
 	@RequestMapping(value = "userList")
-	public String userList(HttpServletRequest request, ModelMap modelMap, HttpSession session, USearchVO uv) {
+	public String userList(ModelMap modelMap, USearchVO uv) {
 		
 		if (uv.getQ() == null) {
 			uv.setQ("");
