@@ -202,3 +202,8 @@ input::placeholder {
 	font-weight: bold;
     display: block;
 }
+.lecture{
+    width: 65%;
+    margin: 0 auto;
+    justify-content: space-around;
+}

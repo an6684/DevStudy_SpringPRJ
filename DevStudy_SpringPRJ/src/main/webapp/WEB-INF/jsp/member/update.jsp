@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>DevStudy</title>
+<title>마이페이지</title>
 <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="css/update.css?ver=2">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

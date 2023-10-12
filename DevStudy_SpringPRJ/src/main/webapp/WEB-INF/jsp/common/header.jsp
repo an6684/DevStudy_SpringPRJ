@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/common.css?ver=1.1">
-<link rel="stylesheet" href="css/header.css?ver=2.57">
+<link rel="stylesheet" href="css/header.css?ver=2.58">
 </head>
 <style>
 .none {
@@ -55,6 +55,14 @@
 							      <a href="#None">강의 관리</a>
 							    </li>
 							  </ul>
+							</div> 
+						</c:if>
+						<c:if test="${sessionScope.userrank eq '2' }">
+							<div class="menu">
+							  	<div class="flex align lecture">
+				                	<i class="fa-solid fa-laptop-code inline"></i>
+				                    <a href="lecture">학습 관리</a>
+			                    </div>
 							</div> 
 						</c:if>
 					</c:when>
