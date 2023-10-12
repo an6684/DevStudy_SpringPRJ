@@ -138,19 +138,6 @@
 			alert("로그인 후 이용해주세요.");
 		}
 		
-		// 현재 페이지의 URL에서 페이지 이름을 가져옴 (예: "board" 또는 "notice")
-		var currentPage = window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1);
-
-		// 모든 메뉴 항목을 가져와서 data-page 속성을 확인하여 현재 페이지와 일치하는 메뉴 항목을 찾음
-		var menuItems = document.querySelectorAll(".subject a");
-		for (var i = 0; i < menuItems.length; i++) {
-		    var menuItem = menuItems[i];
-		    var pageName = menuItem.getAttribute("data-page");
-
-		    if (pageName == currentPage) {
-		        menuItem.style.color = "red"; // 활성 메뉴 항목의 스타일 변경
-		    }
-		}
 
 
 	</script>
