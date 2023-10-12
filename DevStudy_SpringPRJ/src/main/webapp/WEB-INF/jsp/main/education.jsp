@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>강의 시청</title>
-<link rel="stylesheet" href="css/education.css?ver=1.27">
+<link rel="stylesheet" href="css/education.css?ver=1.29">
 <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
-<link rel="stylesheet" href="css/header.css?ver=2.517">
+<link rel="stylesheet" href="css/common.css?ver=1.4">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
 <script type="text/javascript">

@@ -11,11 +11,10 @@
 <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="css/board_content.css?ver=10.52">
 <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/header.css?ver=2.516">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="css/header.css?ver=2.517">
 <!--  jQuery, bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js?after"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
 <!-- summernote css/js-->

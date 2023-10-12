@@ -32,7 +32,7 @@ header {
 
 .list-box {
 	width: 30%;
-	padding: 30px;
+	padding: 0 30px 0 30px;
 }
 
 .url-title {
@@ -132,4 +132,7 @@ header {
     overflow-y: scroll;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+.url-title{
+	margin: 15px 0;
 }

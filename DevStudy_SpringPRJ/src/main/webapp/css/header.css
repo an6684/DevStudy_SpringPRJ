@@ -199,6 +199,6 @@ input::placeholder {
 }
 
 #logo{
-	line-height: 50px;
+	font-weight: bold;
     display: block;
 }

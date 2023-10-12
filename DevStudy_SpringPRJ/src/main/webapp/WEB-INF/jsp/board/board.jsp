@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/board.css?ver=3.34">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/header.css?ver=2.516">
+    <link rel="stylesheet" href="css/header.css?ver=2.57">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>

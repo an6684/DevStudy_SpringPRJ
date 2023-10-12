@@ -7,9 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/common.css?ver=1.1">
-<link rel="stylesheet" href="css/header.css?ver=2.54">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<link rel="stylesheet" href="css/header.css?ver=2.57">
 </head>
 <style>
 .none {
@@ -25,14 +23,15 @@
 			
 			<nav class="flex">
 				<h1 id="title">
-					<a id="logo" href="/">DevStudy</a>
+					<a id="logo" class="title-l" href="/">DevStudy</a>
 				</h1>
-				<c:forEach var="sj" items="${ subject }">
-					<a href="category?id=${ sj.sbj_id }">${ sj.sbj_nm }</a> 
-				</c:forEach>
-				<!-- 서블릿 필요 -->
-				<a href="board">Board</a> 
-				<a href="notice">Notice</a>
+				<div class="subject">
+					<c:forEach var="sj" items="${ subject }">
+						<a href="category?id=${ sj.sbj_id }" data-page="${sj.sbj_id}">${ sj.sbj_nm }</a> 
+					</c:forEach>
+					<a href="board" data-page="board">Board</a> 
+					<a href="notice" data-page="notice">Notice</a>
+				</div>
 			</nav>
 			<div class="sub-gnb">
 				<c:choose>
@@ -41,7 +40,7 @@
 						<i id="state" class="fa-solid fa-user header-image pointer"></i>
 						<c:if test="${sessionScope.userrank eq '1' }">
 							<div class="menu">
-							  <span>관리자 모드</span>
+							  <span>관리자 메뉴</span>
 							  <ul class="sub">
 							    <li>
 							      <a href="userList">회원 관리</a>
@@ -138,6 +137,22 @@
 		function loginAlert(){
 			alert("로그인 후 이용해주세요.");
 		}
+		
+		// 현재 페이지의 URL에서 페이지 이름을 가져옴 (예: "board" 또는 "notice")
+		var currentPage = window.location.pathname.substring(window.location.pathname.lastIndexOf("/") + 1);
+
+		// 모든 메뉴 항목을 가져와서 data-page 속성을 확인하여 현재 페이지와 일치하는 메뉴 항목을 찾음
+		var menuItems = document.querySelectorAll(".subject a");
+		for (var i = 0; i < menuItems.length; i++) {
+		    var menuItem = menuItems[i];
+		    var pageName = menuItem.getAttribute("data-page");
+
+		    if (pageName == currentPage) {
+		        menuItem.style.color = "red"; // 활성 메뉴 항목의 스타일 변경
+		    }
+		}
+
+
 	</script>
 </body>
 </html>

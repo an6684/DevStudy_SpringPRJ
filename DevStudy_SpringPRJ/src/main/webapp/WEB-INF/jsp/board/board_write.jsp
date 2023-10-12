@@ -8,16 +8,19 @@
 <link rel="stylesheet" href="css/write.css?ver=6.2">
 <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
 <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/header.css?ver=2.516">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="css/header.css?ver=2.57">
 <!--  jQuery, bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js?after"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
 <!-- summernote css/js-->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/go.min.js"></script>
 </head>
 <body>
 	<!-- header file -->
@@ -51,10 +54,8 @@
 
 	</section>
 
-	<%-- <%@include file="./footer.jsp"%> --%>
-
 	<script src="js/write.js"></script>
-	<script src="js/header.js?ver=2"></script>
+	<script src="js/header.js?ver=3.1"></script>
 	<script>
 		function confirmRegedit() {
 		    if (confirm('게시글을 저장하시겠습니까?')) {
@@ -72,8 +73,9 @@
 		      imageResizeToOriginal: false, // 이미지 원본 크기 유지 여부
 			  // 에디터 한글 설정
 			  lang: "ko-KR",
-			  // 에디터에 커서 이동 (input창의 autofocus라고 생각하시면 됩니다.)
+			  // 에디터에 커서 이동 
 			  focus : true,
+			  prettifyHtml:true,
 			  toolbar: [
 				    // 글꼴 설정
 				    ['fontname', ['fontname']],
@@ -92,7 +94,8 @@
 				    // 그림첨부, 링크만들기, 동영상첨부
 				    ['insert',['picture','link','video']],
 				    // 확대해서보기, 도움말
-				    ['view', ['fullscreen', 'help']]
+				    ['view', ['fullscreen', 'help']],
+				    ['highlight', ['highlight']]
 				  ],
 				  // 추가한 글꼴
 				fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
