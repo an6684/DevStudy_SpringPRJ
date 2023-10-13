@@ -13,6 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DevStudy</title>
 <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
+
 <link href="css/index.css?ver=1.218" rel="stylesheet">
 <link href="css/index-media.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

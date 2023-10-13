@@ -81,8 +81,6 @@ public class AccountCtr {
 		System.out.println("userid: " + (request.getSession().getAttribute("userid").toString()));
 		System.out.println("username: " + (request.getSession().getAttribute("username").toString()));
 		System.out.println("userrank: " + (request.getSession().getAttribute("userrank").toString()));
-//		System.out.println("usertel: " + (request.getSession().getAttribute("usertel").toString()));
-//		System.out.println("useremail: " + (request.getSession().getAttribute("useremail").toString()));
 
 		if ("Y".equals(lv.getRemember())) {
 			set_cookie("sid", lv.getUserid(), response);
@@ -159,7 +157,7 @@ public class AccountCtr {
 		modelMap.addAttribute("username", userName);
 		modelMap.addAttribute("useremail", userEmail);
 		modelMap.addAttribute("usertel", userTel);
-
+		
 		return "member/update";
 	}
 
@@ -266,7 +264,6 @@ public class AccountCtr {
 						mailSenderNaver.send(msg);
 					
 				}catch (Exception e) {
-					// TODO: handle exception
 					System.out.println(e.getMessage());
 				}
 				
@@ -276,11 +273,10 @@ public class AccountCtr {
 				map.put("m_idx", isUser.getIdx());
 				return map;
 				
-			}else {//존재하지 않는 이메일인 경우 -> 가입되지 않은 사용자 -> 회원가입 할래?
+			}else {//존재하지 않는 이메일인 경우 -> 가입되지 않은 사용자
 				
 				map.put("status", false);
 				map.put("reason", "failEmail");
-				
 				return map;
 				
 			}

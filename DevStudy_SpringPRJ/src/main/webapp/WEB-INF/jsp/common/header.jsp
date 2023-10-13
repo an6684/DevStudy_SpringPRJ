@@ -95,49 +95,48 @@
 	                </c:otherwise>
 	            </c:choose>
 				<span id="profile">내프로필</span>
-					<div class="label-box">
-	                    <c:choose>
-							<c:when test="${ empty sessionScope.userid }">
-								<div class="flex align">
-									<i class="fa-solid fa-bookmark inline"></i>
-									<a href='account' onclick="loginAlert()">관심 목록</a>
-								</div>
-								<div class="flex align">
-									<i class="fa-solid fa-user inline"></i>
-									<a href='account' onclick="loginAlert()">계정</a>
-								</div>
-								<div class="flex align">
-									<i class="fa-solid fa-right-to-bracket inline"></i>
-									<a href='account'>로그인</a>
-								</div>
-							</c:when>
-							<c:otherwise>
-								 <div class="flex align">
-									<i class="fa-solid fa-bookmark inline"></i>
-									<a href='category?id=6'>관심 목록</a>
-								 </div>
-								 
-								 <div class="flex align">
-									<i class="fa-solid fa-user inline"></i>
-									<a href='update'>계정</a>
-								 </div>
-					            <div class="flex align">
-									<i class="fa-solid fa-right-to-bracket inline"></i>
-									<a href='logout'>로그아웃</a>
-								</div>
-								<c:choose>
-					                <c:when test="${sessionScope.userrank eq '2'}">
-					                	<div class="flex align">
-						                	<i class="fa-solid fa-laptop-code inline"></i>
-						                    <a href="lecture">학습 관리</a>
-					                    </div>
-					                </c:when>
-					                <c:otherwise>										
-					                </c:otherwise>
-					            </c:choose>
-							</c:otherwise>
-          				</c:choose>
-					</div>
+				<div class="label-box">
+                    <c:choose>
+						<c:when test="${ empty sessionScope.userid }">
+							<div class="flex align">
+								<i class="fa-solid fa-bookmark inline"></i>
+								<a href='account' onclick="loginAlert()">관심 목록</a>
+							</div>
+							<div class="flex align">
+								<i class="fa-solid fa-user inline"></i>
+								<a href='account' onclick="loginAlert()">계정</a>
+							</div>
+							<div class="flex align">
+								<i class="fa-solid fa-right-to-bracket inline"></i>
+								<a href='account'>로그인</a>
+							</div>
+						</c:when>
+						<c:otherwise>
+							 <div class="flex align">
+								<i class="fa-solid fa-bookmark inline"></i>
+								<a href='category?id=6'>관심 목록</a>
+							 </div>
+							 <div class="flex align">
+								<i class="fa-solid fa-user inline"></i>
+								<a href='update'>계정</a>
+							 </div>
+				            <div class="flex align">
+								<i class="fa-solid fa-right-to-bracket inline"></i>
+								<a href='logout'>로그아웃</a>
+							</div>
+							<c:choose>
+				                <c:when test="${sessionScope.userrank eq '2'}">
+				                	<div class="flex align">
+					                	<i class="fa-solid fa-laptop-code inline"></i>
+					                    <a href="lecture">학습 관리</a>
+				                    </div>
+				                </c:when>
+				                <c:otherwise>										
+				                </c:otherwise>
+				            </c:choose>
+						</c:otherwise>
+         				</c:choose>
+				</div>
 			</div>
 		</div>
 	</header>

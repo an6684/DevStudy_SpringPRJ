@@ -31,7 +31,6 @@ function sendEmail() {
     	alert('이메일을 입력하세요.');
         return;
     }
-
     if (!regex.test(m_email)) {
     	alert('올바르지 않은 이메일 형식입니다.');
         return;
@@ -65,6 +64,7 @@ function sendEmail() {
         }
     });
 }
+
 function checkAuthNum() {
     var num = $("#emailNum").val();
     

@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="js/devstudy.js?ver=2"></script>   
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="js/user/signUp.js?ver=10.33"></script>   
+	<script type="text/javascript" src="js/user/signUp.js?ver=10.4"></script>   
 <script>
 //로그인 폼
 function fn_loginSubmit(){
@@ -91,7 +91,7 @@ function fn_loginSubmit(){
 						<input id="account-email" type="email" name="email">
 					</div>
 					<div class="border-box" id="tel">
-						<label>TEL</label>
+						<label>TEL (선택)</label>
 						<input id="account-tel" class="phoneNumber" type="text" name="tel">
 					</div>
 					<div class="border-box" id="btn-box">

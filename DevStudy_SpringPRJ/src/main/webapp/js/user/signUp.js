@@ -83,11 +83,6 @@ function createFrom(obj){
 		obj.email.focus();
 		return false;
 	}
-	if(obj.tel.value ==""){
-		alert("전화번호를 입력하세요.");
-		obj.tel.focus();
-		return false;
-	}
 	alert("회원가입이 완료되었습니다. 로그인 후 이용해주세요.")
 }
 
