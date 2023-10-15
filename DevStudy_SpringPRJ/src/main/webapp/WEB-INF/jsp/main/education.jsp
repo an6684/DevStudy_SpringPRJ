@@ -61,10 +61,6 @@
 					<small>등록일 : <fmt:formatDate pattern="yyyy년 MM월 dd일 hh시 mm분" value="${ video.regdate }" /></small>
 					<h2 class="url-title"><c:out value="${ video.title }" /></h2>
 					<h4 class="url-content"><c:out value="${ video.description }" /></h4>
-					<!-- 관심목록 버튼 -->
-					<!-- <button id="addToFavoritesBtn" onclick="addCart()">
-						<span id="buttonText">관심목록 추가 <i class="fa-solid fa-plus add"></i></span>
-					</button> -->
 					<c:choose>
 						<c:when test="${newCartValue eq 'Y'}">
 							<!-- 관심목록 버튼 -->
@@ -80,7 +76,7 @@
 					</c:choose>
 					
 					<!--  <span>조회수 : </span>  -->
-					<ul class="list">
+					<ul class="list sub-list">
 						<div class="scroll-box">
 							<c:forEach var="list" items="${subMenu}">
 							<!-- list -->
@@ -103,5 +99,6 @@
 		</div>
 	</section>
 	<script src="js/header.js?after"></script>
+	<script src="js/education-page.js?after"></script>
 </body>
 </html>

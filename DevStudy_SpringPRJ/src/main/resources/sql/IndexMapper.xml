@@ -60,17 +60,18 @@
             order by video_uploaded_at desc
     </select>  
     
-	<!-- 관심목록 추가 -->
-	<insert id="insertToCart" parameterType="dev.main.CartVO">
-	    INSERT INTO tb_cart (video_id, user_id)
-	    VALUES (#{id}, #{user_id})
-	</insert>
-	
+    <!-- 관심목록 여부 조회 -->
 	<select id="selectCart" parameterType="dev.main.CartVO" resultType="dev.main.CartVO">
 	    SELECT *
 	    FROM tb_cart
 	    WHERE video_id = #{id} AND user_id = #{user_id}
 	</select>
+		
+	<!-- 관심목록 추가 -->
+	<insert id="insertToCart" parameterType="dev.main.CartVO">
+	    INSERT INTO tb_cart (video_id, user_id)
+	    VALUES (#{id}, #{user_id})
+	</insert>
 	
 	<!-- 관심목록 해제 -->
 	<delete id="deleteFromCart" parameterType="dev.main.CartVO">
