@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <title>공지사항</title>
     <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="css/board.css?ver=3.34">
+    <link rel="stylesheet" href="css/board.css?ver=3.44">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/header.css?ver=2.516">
@@ -23,7 +23,7 @@
                 <thead>
                     <tr class="post-item">
                         <th class="post-num"> </th>
-                        <th class="post-title">게시글 제목</th>
+                        <th class="post-title">공지사항 제목</th>
                         <th class="post-author">작성자</th>
                         <th class="post-date">작성일</th>
                         <c:choose>
@@ -38,8 +38,7 @@
                 <tbody>
                     <c:forEach var="nl" items="${noticeList}" varStatus="loop">
                         <tr>
-                            <%-- <td>${loop.index + 1}</td> --%>
-                            <td>${(page - 1) * 10 + loop.index + 1}</td>
+                            <td>${loop.index + 1}</td>
                             <td>
                             	<input type="hidden" value="${nl.filepath}" name="filepath" />
                             	<a href="noticeDetail?id=${nl.content_id}">
@@ -70,9 +69,9 @@
                 <a id='qna-button' href='writeNews'>공지사항 등록</a>
             </c:if>
             <div class="paging">
-            	<input type="hidden" value=${count}>
+            	<input type="hidden" value="${count}"/>
 				<c:if test="${count ==0}">
-					<p>검색 결과가 없습니다.</p>
+					<p id="search-result">검색 결과가 없습니다.</p>
 	            </c:if>
 	            
 	            <!-- 변수선언 -->
@@ -81,7 +80,7 @@
 				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
 					 
 				<!-- 이전 페이지 -->
-				<div style="display:flex; align-items:center">
+				<div style="display:flex; align-items:center; width:20%; margin:0 auto 20px auto; justify-content: center;">
 					<c:if test="${startNum > 1 }">
 				        <c:choose>
 						    <c:when test="${empty param.boardid}">
@@ -97,7 +96,7 @@
 					</c:if>
 				
 					<!-- 숫자 페이지 -->
-					<ul style="display: flex;padding-right:40px;">
+					<ul style="display: flex;">
 						<c:forEach var="i" begin="0" end="4">
 							<c:if test="${param.p==(startNum+i)}">
 								<c:set var="style" value="font-weight:bold; color:red;" />

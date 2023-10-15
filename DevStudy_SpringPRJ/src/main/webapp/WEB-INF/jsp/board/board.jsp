@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <title>게시판</title>
     <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="css/board.css?ver=3.34">
+    <link rel="stylesheet" href="css/board.css?ver=3.69">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
     <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/header.css?ver=2.57">
@@ -69,9 +69,9 @@
                 <a id='qna-button' href='writeBoard'>작성하기</a>
             </c:if>
             <div class="paging">
-            	<input type="hidden" value=${count}>
+            	<input type="hidden" value="${count}"/>
 				<c:if test="${count ==0}">
-					<p>검색 결과가 없습니다.</p>
+					<p id="search-result">검색 결과가 없습니다.</p>
 	            </c:if>
 	            
 	            <!-- 변수선언 -->
@@ -80,7 +80,7 @@
 				<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
 					 
 				<!-- 이전 페이지 -->
-				<div style="display:flex; align-items:center">
+				<div style="display:flex; align-items:center; width:20%; margin:0 auto 20px auto; justify-content: center;">
 					<c:if test="${startNum > 1 }">
 				        <c:choose>
 						    <c:when test="${empty param.boardid}">
@@ -96,7 +96,7 @@
 					</c:if>
 				
 					<!-- 숫자 페이지 -->
-					<ul style="display: flex;padding-right:40px;">
+					<ul style="display: flex;">
 						<c:forEach var="i" begin="0" end="4">
 							<c:if test="${param.p==(startNum+i)}">
 								<c:set var="style" value="font-weight:bold; color:red;" />
@@ -138,15 +138,15 @@
 			<!--  검색 -->
 			<form action="" method="get">
 				<div class="clear">
-					<select name="f" class="f-l">
+					<select name="f">
 						<option ${(param.f=="title")?"selected":""} value="title">제목</option>
 						<option ${(param.f=="writedid")?"selected":""} value="writedid">글쓴이</option>
 					</select>
-					<input type="text" name="q" class="search01 f-l" /> 
+					<input type="text" name="q" class="search01" /> 
 			        <c:if test="${not empty param.boardid}">
 			            <input type="hidden" name="boardid" value="${param.boardid}" />
 			        </c:if>
-					<input type="submit" value="검색" class="btn-search01 f-l">
+					<input type="submit" value="검색" class="btn-search01">
 				</div>
 			</form>
         </div>
