@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>강의 등록</title>
+<title>강의 등록/수정</title>
 <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="css/common.css?ver=1.4">
 <link rel="stylesheet" href="css/header.css?ver=1">
-<link rel="stylesheet" href="css/lecture/lectureInsert.css?ver=1.2">
+<link rel="stylesheet" href="css/lecture/lectureInsert.css?ver=1.22">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
 
@@ -28,7 +28,7 @@
 		</div>
 		
 		<c:if test="${ not empty video }">
-		<form id="update-form" method="post" action="/lectureUpdate">
+		<form id="update-form" method="post" action="lectureUpdate">
 			<div class="border-bottom flex align">
 				<label>TITLE</label>
 				<input value="${ video.title }" type="text" name="title" class="content-input input">

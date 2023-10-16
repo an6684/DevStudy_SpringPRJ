@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>유저 관리</title>
+    <title>회원 관리</title>
     <link href="img/icon.png" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="css/board.css?ver=3.38">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>

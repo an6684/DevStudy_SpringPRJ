@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import dev.board.BSearchVO;
 import dev.board.BoardSvc;
 import dev.board.BoardVO;
+import dev.lecture.LSearchVO;
+import dev.main.VideoVO;
 import dev.member.MemberVO;
 import dev.notice.NoticeSvc;
 import dev.notice.NoticeVO;
@@ -127,4 +129,31 @@ public class AdminCtr {
 		
 		return "redirect:bList";
 	}
+	
+	/**
+     * lecture page. 
+     */
+    @RequestMapping(value = "videoList")
+    public String videoList(HttpServletRequest request, HttpSession session, ModelMap modelMap, LSearchVO lv) {
+    	String userid = (String) session.getAttribute("userid");
+    	lv.setUploader_id(userid);
+    	
+    	if (lv.getQ() == null) {
+    		lv.setQ("");
+		}
+    	lv.setP2(1);
+		
+		if(lv.getP() != null && !lv.getP().equals("")) {
+			lv.setP2(Integer.parseInt(lv.getP()));
+		}
+		
+		List<VideoVO> list=admSvc.adminVideoList(lv);
+				
+		int count = admSvc.adminVideoCount(lv);
+		
+		modelMap.addAttribute("count",count);
+		modelMap.addAttribute("videos", list);
+    	
+        return "admin/video_list";
+    }
 }

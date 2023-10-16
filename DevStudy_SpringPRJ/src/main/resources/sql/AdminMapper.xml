@@ -3,6 +3,16 @@
 
 <mapper namespace="dev.admin.AdminMapper">
 
+	<resultMap id="VideoResultMap" type="dev.main.VideoVO">
+        <result column="video_id" property="id" />
+        <result column="video_title" property="title" />
+        <result column="video_description" property="description" />
+        <result column="video_url" property="url" />
+        <result column="video_uploader_id" property="uploader_id" />
+        <result column="video_uploaded_at" property="regdate" />
+        <result column="category_id" property="category_id" />
+    </resultMap>
+
 	<select id="getUserCount" parameterType="dev.admin.USearchVO" resultType= "Integer">
 		select count(*) 
 			from tb_user_01 
@@ -85,6 +95,44 @@
 		            	and useFlag ='Y'
 		            </where>
 	            order by regdate desc)n
+	            where (@rownum:=0)=0)num
+	            where num.num between 1 + (#{p2} - 1 ) * 10 and #{p2} * 10
+	</select>
+	
+	<select id="adminVideoCount" parameterType="dev.lecture.LSearchVO" resultType= "Integer">
+		select count(*) 
+			from tb_video 
+			<where>
+				<choose>
+ 					<when test="f != null and f.equals('title')">
+	                	and video_title like CONCAT('%', #{q}, '%')
+                	</when>
+	                <when test="f != null and f.equals('description')">
+	                	and video_description like CONCAT('%', #{q}, '%')
+	                </when>
+				</choose>
+			</where> 
+	</select>
+	
+	<select id="adminVideoList" parameterType="dev.lecture.LSearchVO" resultType="dev.main.VideoVO" resultMap="VideoResultMap">
+			select *
+	            from (select @rownum:=@rownum+1 as num ,n.*
+	                from( select *
+	                    from tb_video
+		            <where>
+		            	<choose>
+		                	<when test="f != null and f.equals('title')">
+		                    	and video_title like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <when test="f != null and f.equals('uploader_id')">
+		                    	and uploader_id like CONCAT('%', #{q}, '%')
+		                    </when>
+		                    <otherwise>
+		                    	and video_title like CONCAT('%', #{q}, '%')
+		                    </otherwise>
+		                </choose>
+		            </where>
+	            order by video_uploaded_at desc)n
 	            where (@rownum:=0)=0)num
 	            where num.num between 1 + (#{p2} - 1 ) * 10 and #{p2} * 10
 	</select>

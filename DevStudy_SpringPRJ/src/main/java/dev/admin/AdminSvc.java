@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import dev.board.BSearchVO;
 import dev.board.BoardVO;
+import dev.lecture.LSearchVO;
+import dev.main.VideoVO;
 import dev.member.MemberVO;
 
 @Service
@@ -25,5 +27,13 @@ public class AdminSvc {
 	
 	public List<BoardVO> adminBoardList(BSearchVO bv){
 		return adminMapper.adminBoardList(bv);
+	}
+	
+	public int adminVideoCount(LSearchVO param) {
+		return adminMapper.adminVideoCount(param);
+	}
+	
+	public List<VideoVO> adminVideoList(LSearchVO param){
+		return adminMapper.adminVideoList(param);
 	}
 }

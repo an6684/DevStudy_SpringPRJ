@@ -58,6 +58,26 @@
 		values(#{title},#{description},#{url},#{uploader_id},#{category_id})
 	</insert>
 	
+	<update id="lectureUpdate" parameterType="dev.main.VideoVO">
+	    UPDATE tb_video
+	    SET
+	        video_title = #{title},
+	        video_description = #{description},
+	        video_url = #{url},
+	        video_uploader_id = #{uploader_id},
+	        category_id = #{category_id}
+	    WHERE
+	        video_id = #{id}
+	</update>
+	
+	<!-- <select id="getVideo" parameterType="Integer" resultType="dev.main.VideoVO" resultMap="VideoResultMap">
+        select 
+		    *
+			from tb_video v
+			inner join tb_subject_categories s on v.category_id = s.sbj_id
+			where v.video_id = #{id} and v.useFlag = 'Y'
+    </select>  -->
+	
 	<!-- 
 	delete    
 	<delete id="delBoard" parameterType="dev.board.BoardVO">

@@ -24,4 +24,8 @@ public class LectureSvc {
 	public int lectureInsert(VideoVO param) {
 		return lectureMapper.lectureInsert(param);
 	}
+	
+	public int lectureUpdate(VideoVO param) {
+		return lectureMapper.lectureUpdate(param);
+	}
 }

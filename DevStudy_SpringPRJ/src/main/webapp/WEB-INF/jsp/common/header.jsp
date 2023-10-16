@@ -52,7 +52,7 @@
 							      <a href="nList">공지사항 관리</a>
 							    </li>
 							    <li>
-							      <a href="#None">강의 관리</a>
+							      <a href=videoList>강의 관리</a>
 							    </li>
 							  </ul>
 							</div> 
@@ -61,7 +61,7 @@
 							<div class="menu">
 							  	<div class="flex align lecture">
 				                	<i class="fa-solid fa-laptop-code inline"></i>
-				                    <a href="lecture">학습 관리</a>
+				                    <a href="lecture"><span>학습 관리</span></a>
 			                    </div>
 							</div> 
 						</c:if>

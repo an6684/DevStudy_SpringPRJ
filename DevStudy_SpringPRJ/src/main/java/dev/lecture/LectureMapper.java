@@ -10,4 +10,6 @@ public interface LectureMapper {
 	List<VideoVO> getVideoList(LSearchVO param);
 	
 	int lectureInsert(VideoVO param);
+	
+	int lectureUpdate(VideoVO param);
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import dev.board.BSearchVO;
+import dev.main.IndexSvc;
 import dev.main.VideoVO;
 
 
@@ -21,6 +22,9 @@ public class LectureCtr {
 	
 	@Autowired
 	LectureSvc lecSvc;
+	
+	@Autowired
+	IndexSvc indexSvc;
 	
 	/**
      * lecture page. 
@@ -52,10 +56,22 @@ public class LectureCtr {
      * lecture regedit page. 
      */
     @RequestMapping(value = "lectureInsert")
-    public String lectureInsert() {
+    public String lectureInsert(HttpServletRequest request, ModelMap modelMap) {
     	
-        return "lecture/lecture_insert";
+    	String video_id = request.getParameter("id");
+    	
+    	if(video_id == null) {
+    		return "lecture/lecture_insert";
+    	}else {
+    		int videoid = Integer.parseInt(video_id);
+    		VideoVO vv = indexSvc.getVideo(videoid);
+    		
+    		modelMap.addAttribute("video", vv);
+    		
+    		return "lecture/lecture_insert";
+    	}
     }
+    
     
     /**
      * 강의 등록 처리
@@ -77,4 +93,29 @@ public class LectureCtr {
     	
         return "redirect:lecture";
     }
+    
+    /**
+     * 강의 수정 처리
+     */
+    @RequestMapping(value = "lectureUpdate", method = RequestMethod.POST)
+    public String lectureUpdate(HttpServletRequest request, HttpSession session, @RequestParam String title,
+    		@RequestParam String description, @RequestParam String category,
+    		@RequestParam String url, @RequestParam String id, VideoVO vv) {
+    	System.out.println("비디오 아이디: "+id);
+    	String userid = (String) session.getAttribute("userid");
+    	int videoId=Integer.parseInt(id);
+    	int category_num = Integer.parseInt(category);
+    	
+    	vv.setId(videoId);
+    	vv.setTitle(title);
+    	vv.setDescription(description);
+    	vv.setUploader_id(userid);
+    	vv.setUrl(url);
+    	vv.setCategory_id(category_num);
+    	
+    	lecSvc.lectureUpdate(vv);
+    	
+        return "redirect:lecture";
+    }
+    
 }

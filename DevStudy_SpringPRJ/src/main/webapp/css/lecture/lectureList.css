@@ -6,14 +6,15 @@
 	list-style: none;
 	text-decoration: none;
 	box-sizing: border-box;
+	color: black;
 }
 body {
 	font-size: 10px;
 }
 #board-section {
 	min-height: calc(100vh - 20rem);
-	width: 80%;
-	margin: 40px auto;
+	width: 70%;
+	margin: 50px auto 10px auto;
 }
 #ohter {
 	height: 10rem;
@@ -31,10 +32,10 @@ table {
 th {
   border-top: 1px solid #999; /* 셀 경계선 */
   border-bottom: 1px solid #999; /* 셀 경계선 */
-  padding: 1.2rem 0; /* 안쪽 여백 */
+  padding: 0.8rem 0; /* 안쪽 여백 */
 }
 td {
-  padding: 1.2rem 0; /* 안쪽 여백 */
+  padding: 1rem 0; /* 안쪽 여백 */
 }
 tr{ 
 	border-bottom: 1px solid #ddd; /* 셀 경계선 */
@@ -93,9 +94,10 @@ embed {
 }
 #qna-button {
 	display: inline-block;
-	font-size: 0.7rem;
+	font-size: 0.8rem;
 	background-color: #fff;
 	border:none;
+	padding-top: 5px;
 }
 #qna-button:hover {
 	text-decoration: underline;
@@ -124,4 +126,44 @@ embed {
 }
 .hidden {
 	visibility: hidden;
+}
+select {
+	border-style: none;
+    height: 36px;
+    text-align: center;
+    padding: 0 3px;
+}
+#search-result{
+	height: 300px;
+    margin-top: 15px;
+}
+.search02{
+	border-style: none;
+}
+#top-box{
+	display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+#select-box{
+	width: 28%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    justify-content: space-around;
+    height: 25px;
+}
+.f-l{
+	height: 20px;
+	
+}
+.f-2{
+	padding-right: 5px;
+	background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
